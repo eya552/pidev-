@@ -5,52 +5,86 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
+    #[Assert\Positive(message:"The value must be a positive number")]
+
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\Email(message:"The eamil ' {{ value }} ' is not a valid email")]
+    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
     private ?string $email = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
     private array $roles = [];
 
     /**
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
     private ?string $password = null;
 
     #[ORM\Column(length: 100)]
-    private ?string $nom = null;
+    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
+
+    private ?string $FirestName = null;
 
     #[ORM\Column(length: 100)]
-    private ?string $prenom = null;
+    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
+
+    private ?string $LastName = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Adresse = null;
+    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
+
+    private ?string $image = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
+
+    private ?string $Adress = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
+    #[Assert\Positive(message:"The value must be a positive number")]
+
+
     private ?int $tel = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $DateDeNaissance = null;
+    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
+    #[Assert\Date(message:"The date '{{ value }}' is not a valid date format (yyyy-mm-dd).")]
+
+    private ?\DateTimeInterface $DateOfBirth = null;
 
     #[ORM\Column(type: Types::ARRAY)]
-    private array $ListeDesIdAnimaux = [];
+    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
+
+    private array $PetsListId = [];
 
     #[ORM\Column]
+    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
+
     private ?int $IdContrat = null;
 
-    #[ORM\Column(length: 100)]
-    private ?string $ModeDePaiement = null;
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
+
+    private ?string $paimentMethod = null;
 
     public function getId(): ?int
     {
@@ -141,38 +175,50 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getNom(): ?string
+    public function getFirestName(): ?string
     {
-        return $this->nom;
+        return $this->FirestName;
     }
 
-    public function setNom(string $nom): self
+    public function setFirestName(string $FirestName): self
     {
-        $this->nom = $nom;
+        $this->FirestName = $FirestName;
 
         return $this;
     }
 
-    public function getPrenom(): ?string
+    public function getLastName(): ?string
     {
-        return $this->prenom;
+        return $this->LastName;
     }
 
-    public function setPrenom(string $prenom): self
+    public function setLastName(string $LastName): self
     {
-        $this->prenom = $prenom;
+        $this->LastName = $LastName;
 
         return $this;
     }
 
-    public function getAdresse(): ?string
+    public function getImage(): ?string
     {
-        return $this->Adresse;
+        return $this->image;
     }
 
-    public function setAdresse(string $Adresse): self
+    public function setImage(string $image): self
     {
-        $this->Adresse = $Adresse;
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getAdress(): ?string
+    {
+        return $this->Adress;
+    }
+
+    public function setAdress(string $Adress): self
+    {
+        $this->Adress = $Adress;
 
         return $this;
     }
@@ -189,26 +235,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getDateDeNaissance(): ?\DateTimeInterface
+    public function getDateOfBirth(): ?\DateTimeInterface
     {
-        return $this->DateDeNaissance;
+        return $this->DateOfBirth;
     }
 
-    public function setDateDeNaissance(\DateTimeInterface $DateDeNaissance): self
+    public function setDateOfBirth(\DateTimeInterface $DateOfBirth): self
     {
-        $this->DateDeNaissance = $DateDeNaissance;
+        $this->DateOfBirth = $DateOfBirth;
 
         return $this;
     }
 
-    public function getListeDesIdAnimaux(): array
+    public function getPetsListId(): array
     {
-        return $this->ListeDesIdAnimaux;
+        return $this->PetsListId;
     }
 
-    public function setListeDesIdAnimaux(array $ListeDesIdAnimaux): self
+    public function setPetsListId(array $PetsListId): self
     {
-        $this->ListeDesIdAnimaux = $ListeDesIdAnimaux;
+        $this->PetsListId = $PetsListId;
 
         return $this;
     }
@@ -225,14 +271,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getModeDePaiement(): ?string
+    public function getPaimentMethod(): ?string
     {
-        return $this->ModeDePaiement;
+        return $this->paimentMethod;
     }
 
-    public function setModeDePaiement(string $ModeDePaiement): self
+    public function setPaimentMethod(string $paimentMethod): self
     {
-        $this->ModeDePaiement = $ModeDePaiement;
+        $this->paimentMethod = $paimentMethod;
 
         return $this;
     }

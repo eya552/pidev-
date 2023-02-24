@@ -12,14 +12,15 @@
                 <th>Email</th>
                 <th>Roles</th>
                 <th>Password</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Adresse</th>
+                <th>FirestName</th>
+                <th>LastName</th>
+                <th>Image</th>
+                <th>Adress</th>
                 <th>Tel</th>
-                <th>DateDeNaissance</th>
-                <th>ListeDesIdAnimaux</th>
+                <th>DateOfBirth</th>
+                <th>PetsListId</th>
                 <th>IdContrat</th>
-                <th>ModeDePaiement</th>
+                <th>PaimentMethod</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -30,14 +31,15 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>{{ user.password }}</td>
-                <td>{{ user.nom }}</td>
-                <td>{{ user.prenom }}</td>
-                <td>{{ user.Adresse }}</td>
+                <td>{{ user.FirestName }}</td>
+                <td>{{ user.LastName }}</td>
+                <td>{{ user.image }}</td>
+                <td>{{ user.Adress }}</td>
                 <td>{{ user.tel }}</td>
-                <td>{{ user.DateDeNaissance ? user.DateDeNaissance|date('Y-m-d') : '' }}</td>
-                <td>{{ user.ListeDesIdAnimaux ? user.ListeDesIdAnimaux|join(', ') : '' }}</td>
+                <td>{{ user.DateOfBirth ? user.DateOfBirth|date('Y-m-d') : '' }}</td>
+                <td>{{ user.PetsListId ? user.PetsListId|join(', ') : '' }}</td>
                 <td>{{ user.IdContrat }}</td>
-                <td>{{ user.ModeDePaiement }}</td>
+                <td>{{ user.paimentMethod }}</td>
                 <td>
                     <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
@@ -45,7 +47,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="13">no records found</td>
+                <td colspan="14">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

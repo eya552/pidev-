@@ -15,14 +15,15 @@ class UserType extends AbstractType
             ->add('email')
             ->add('roles')
             ->add('password')
-            ->add('nom')
-            ->add('prenom')
-            ->add('Adresse')
+            ->add('FirestName')
+            ->add('LastName')
+            ->add('image')
+            ->add('Adress')
             ->add('tel')
-            ->add('DateDeNaissance')
-            ->add('ListeDesIdAnimaux')
+            ->add('DateOfBirth')
+            ->add('PetsListId')
             ->add('IdContrat')
-            ->add('ModeDePaiement')
+            ->add('paimentMethod')
         ;
     }
 

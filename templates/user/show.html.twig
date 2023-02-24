@@ -24,36 +24,40 @@
                 <td>{{ user.password }}</td>
             </tr>
             <tr>
-                <th>Nom</th>
-                <td>{{ user.nom }}</td>
+                <th>FirestName</th>
+                <td>{{ user.FirestName }}</td>
             </tr>
             <tr>
-                <th>Prenom</th>
-                <td>{{ user.prenom }}</td>
+                <th>LastName</th>
+                <td>{{ user.LastName }}</td>
             </tr>
             <tr>
-                <th>Adresse</th>
-                <td>{{ user.Adresse }}</td>
+                <th>Image</th>
+                <td>{{ user.image }}</td>
+            </tr>
+            <tr>
+                <th>Adress</th>
+                <td>{{ user.Adress }}</td>
             </tr>
             <tr>
                 <th>Tel</th>
                 <td>{{ user.tel }}</td>
             </tr>
             <tr>
-                <th>DateDeNaissance</th>
-                <td>{{ user.DateDeNaissance ? user.DateDeNaissance|date('Y-m-d') : '' }}</td>
+                <th>DateOfBirth</th>
+                <td>{{ user.DateOfBirth ? user.DateOfBirth|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>ListeDesIdAnimaux</th>
-                <td>{{ user.ListeDesIdAnimaux ? user.ListeDesIdAnimaux|join(', ') : '' }}</td>
+                <th>PetsListId</th>
+                <td>{{ user.PetsListId ? user.PetsListId|join(', ') : '' }}</td>
             </tr>
             <tr>
                 <th>IdContrat</th>
                 <td>{{ user.IdContrat }}</td>
             </tr>
             <tr>
-                <th>ModeDePaiement</th>
-                <td>{{ user.ModeDePaiement }}</td>
+                <th>PaimentMethod</th>
+                <td>{{ user.paimentMethod }}</td>
             </tr>
         </tbody>
     </table>

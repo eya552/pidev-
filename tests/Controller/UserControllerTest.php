@@ -47,14 +47,15 @@ class UserControllerTest extends WebTestCase
             'user[email]' => 'Testing',
             'user[roles]' => 'Testing',
             'user[password]' => 'Testing',
-            'user[nom]' => 'Testing',
-            'user[prenom]' => 'Testing',
-            'user[Adresse]' => 'Testing',
+            'user[FirestName]' => 'Testing',
+            'user[LastName]' => 'Testing',
+            'user[image]' => 'Testing',
+            'user[Adress]' => 'Testing',
             'user[tel]' => 'Testing',
-            'user[DateDeNaissance]' => 'Testing',
-            'user[ListeDesIdAnimaux]' => 'Testing',
+            'user[DateOfBirth]' => 'Testing',
+            'user[PetsListId]' => 'Testing',
             'user[IdContrat]' => 'Testing',
-            'user[ModeDePaiement]' => 'Testing',
+            'user[paimentMethod]' => 'Testing',
         ]);
 
         self::assertResponseRedirects('/user/');
@@ -69,14 +70,15 @@ class UserControllerTest extends WebTestCase
         $fixture->setEmail('My Title');
         $fixture->setRoles('My Title');
         $fixture->setPassword('My Title');
-        $fixture->setNom('My Title');
-        $fixture->setPrenom('My Title');
-        $fixture->setAdresse('My Title');
+        $fixture->setFirestName('My Title');
+        $fixture->setLastName('My Title');
+        $fixture->setImage('My Title');
+        $fixture->setAdress('My Title');
         $fixture->setTel('My Title');
-        $fixture->setDateDeNaissance('My Title');
-        $fixture->setListeDesIdAnimaux('My Title');
+        $fixture->setDateOfBirth('My Title');
+        $fixture->setPetsListId('My Title');
         $fixture->setIdContrat('My Title');
-        $fixture->setModeDePaiement('My Title');
+        $fixture->setPaimentMethod('My Title');
 
         $this->repository->save($fixture, true);
 
@@ -95,14 +97,15 @@ class UserControllerTest extends WebTestCase
         $fixture->setEmail('My Title');
         $fixture->setRoles('My Title');
         $fixture->setPassword('My Title');
-        $fixture->setNom('My Title');
-        $fixture->setPrenom('My Title');
-        $fixture->setAdresse('My Title');
+        $fixture->setFirestName('My Title');
+        $fixture->setLastName('My Title');
+        $fixture->setImage('My Title');
+        $fixture->setAdress('My Title');
         $fixture->setTel('My Title');
-        $fixture->setDateDeNaissance('My Title');
-        $fixture->setListeDesIdAnimaux('My Title');
+        $fixture->setDateOfBirth('My Title');
+        $fixture->setPetsListId('My Title');
         $fixture->setIdContrat('My Title');
-        $fixture->setModeDePaiement('My Title');
+        $fixture->setPaimentMethod('My Title');
 
         $this->repository->save($fixture, true);
 
@@ -112,14 +115,15 @@ class UserControllerTest extends WebTestCase
             'user[email]' => 'Something New',
             'user[roles]' => 'Something New',
             'user[password]' => 'Something New',
-            'user[nom]' => 'Something New',
-            'user[prenom]' => 'Something New',
-            'user[Adresse]' => 'Something New',
+            'user[FirestName]' => 'Something New',
+            'user[LastName]' => 'Something New',
+            'user[image]' => 'Something New',
+            'user[Adress]' => 'Something New',
             'user[tel]' => 'Something New',
-            'user[DateDeNaissance]' => 'Something New',
-            'user[ListeDesIdAnimaux]' => 'Something New',
+            'user[DateOfBirth]' => 'Something New',
+            'user[PetsListId]' => 'Something New',
             'user[IdContrat]' => 'Something New',
-            'user[ModeDePaiement]' => 'Something New',
+            'user[paimentMethod]' => 'Something New',
         ]);
 
         self::assertResponseRedirects('/user/');
@@ -129,14 +133,15 @@ class UserControllerTest extends WebTestCase
         self::assertSame('Something New', $fixture[0]->getEmail());
         self::assertSame('Something New', $fixture[0]->getRoles());
         self::assertSame('Something New', $fixture[0]->getPassword());
-        self::assertSame('Something New', $fixture[0]->getNom());
-        self::assertSame('Something New', $fixture[0]->getPrenom());
-        self::assertSame('Something New', $fixture[0]->getAdresse());
+        self::assertSame('Something New', $fixture[0]->getFirestName());
+        self::assertSame('Something New', $fixture[0]->getLastName());
+        self::assertSame('Something New', $fixture[0]->getImage());
+        self::assertSame('Something New', $fixture[0]->getAdress());
         self::assertSame('Something New', $fixture[0]->getTel());
-        self::assertSame('Something New', $fixture[0]->getDateDeNaissance());
-        self::assertSame('Something New', $fixture[0]->getListeDesIdAnimaux());
+        self::assertSame('Something New', $fixture[0]->getDateOfBirth());
+        self::assertSame('Something New', $fixture[0]->getPetsListId());
         self::assertSame('Something New', $fixture[0]->getIdContrat());
-        self::assertSame('Something New', $fixture[0]->getModeDePaiement());
+        self::assertSame('Something New', $fixture[0]->getPaimentMethod());
     }
 
     public function testRemove(): void
@@ -149,14 +154,15 @@ class UserControllerTest extends WebTestCase
         $fixture->setEmail('My Title');
         $fixture->setRoles('My Title');
         $fixture->setPassword('My Title');
-        $fixture->setNom('My Title');
-        $fixture->setPrenom('My Title');
-        $fixture->setAdresse('My Title');
+        $fixture->setFirestName('My Title');
+        $fixture->setLastName('My Title');
+        $fixture->setImage('My Title');
+        $fixture->setAdress('My Title');
         $fixture->setTel('My Title');
-        $fixture->setDateDeNaissance('My Title');
-        $fixture->setListeDesIdAnimaux('My Title');
+        $fixture->setDateOfBirth('My Title');
+        $fixture->setPetsListId('My Title');
         $fixture->setIdContrat('My Title');
-        $fixture->setModeDePaiement('My Title');
+        $fixture->setPaimentMethod('My Title');
 
         $this->repository->save($fixture, true);
 

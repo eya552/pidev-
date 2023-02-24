@@ -28,21 +28,21 @@
                   {{ form_start(form) }}
                   <form class="row g-3 needs-validation" novalidate>
                     <div class="col-12">
-                      {{form_label(form.nom,"Last name")}}
-                      {{ form_widget(form.nom) }}
-                      {{ form_errors(form.nom)}}
+                      {{form_label(form.LastName,"Last name")}}
+                      {{ form_widget(form.LastName) }}
+                      {{ form_errors(form.LastName)}}
 
 
-                      <input type="text" name="nom" class="form-control" id="yourName" required>
+                      <input type="text" name="LastName" class="form-control" id="yourName" required>
                       <div class="invalid-feedback">Please, enter your last name!</div>
                     </div>
 
                     <div class="col-12">
-                     {{form_label(form.prenom,"First name")}}
-                     {{ form_widget(form.prenom) }}
-                     {{ form_errors(form.prenom)}}
+                     {{form_label(form.FirestName,"First name")}}
+                     {{ form_widget(form.FirestName) }}
+                     {{ form_errors(form.FirestName)}}
 
-                      <input type="text" name="prenom" class="form-control" id="yourPrenom" required>
+                      <input type="text" name="FirestName" class="form-control" id="yourPrenom" required>
                       <div class="invalid-feedback">Please enter enter your first name!</div>
                     </div>
                     <div class="col-12">
@@ -54,13 +54,21 @@
                       <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                     </div>
                     <div class="col-12">
-                      {{form_label(form.ListeDesIdAnimaux,"Your pets ID list")}}
-                      {{ form_widget(form.ListeDesIdAnimaux) }}
-                      {{ form_errors(form.ListeDesIdAnimaux)}}
+                      {{form_label(form.PetsListId,"Your pets ID list")}}
+                      {{ form_widget(form.PetsListId) }}
+                      {{ form_errors(form.PetsListId)}}
 
 
-                      <input type="ListeDesIdAnimaux" name="ListeDesIdAnimaux" class="form-control" id="YourIdAnimalList " required>
+                      <input type="PetsListId" name="PetsListId" class="form-control" id="YourIdAnimalList " required>
                       <div class="invalid-feedback">Please, enter your enter your pets ID list!</div>
+                    </div>
+                    <div class="col-12">
+                     {{form_label(form.image,"Photo")}}
+                     {{ form_widget(form.image) }}
+                     {{ form_errors(form.image)}}
+
+                      <input type="Iimage" name="image" class="form-control" id="yourIdContrat" required>
+                      <div class="invalid-feedback">Please enter enter your Id Contrat!</div>
                     </div>
 
                     <div class="col-12">
@@ -72,26 +80,26 @@
                       <div class="invalid-feedback">Please enter enter your Id Contrat!</div>
                     </div>
                     <div class="col-12">
-                      {{form_label(form.ModeDePaiement,"Payment method ")}}
-                      {{ form_widget(form.ModeDePaiement) }}
-                      {{ form_errors(form.ModeDePaiement)}}
+                      {{form_label(form.paimentMethod,"Payment method ")}}
+                      {{ form_widget(form.paimentMethod) }}
+                      {{ form_errors(form.paimentMethod)}}
 
-                      <input type="ModeDePaiement" name="" class="form-control" id="yourPaymentmethod" required>
+                      <input type="paimentMethod" name="paimentMethod" class="form-control" id="yourPaymentmethod" required>
                       <div class="invalid-feedback">Please enter your Payment method!</div>
                     </div>
                     <div class="col-12">
-                      {{form_label(form.DateDeNaissance,"Date of birth")}}
-                      {{ form_widget(form.DateDeNaissance) }}
-                      {{ form_errors(form.DateDeNaissance)}}
+                      {{form_label(form.DateOfBirth,"Date of birth")}}
+                      {{ form_widget(form.DateOfBirth) }}
+                      {{ form_errors(form.DateOfBirth)}}
                       <div class="invalid-feedback">Please enter a valid  date of birth!</div>
                     </div>
                        <div class="col-12">
-                      {{form_label(form.Adresse,"Adress")}}
-                      {{ form_widget(form.Adresse) }}
-                      {{ form_errors(form.Adresse)}}
+                      {{form_label(form.Adress,"Adress")}}
+                      {{ form_widget(form.Adress) }}
+                      {{ form_errors(form.Adress)}}
 
 
-                      <input type="text" name="Adresse" class="form-control" id="yourEmail" required>
+                      <input type="text" name="Adress" class="form-control" id="yourEmail" required>
                       <div class="invalid-feedback">Please enter a valid address!</div>
                     </div>
                     <div class="col-12">
