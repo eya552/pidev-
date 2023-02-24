@@ -76,15 +76,15 @@ class __TwigTemplate_ccc56933fdf2efcf7c76148e4c0e6f42 extends Template
         ";
         // line 280
         $this->displayBlock('sidebar', $context, $blocks);
-        // line 467
+        // line 471
         echo "        ";
         $this->displayBlock('body', $context, $blocks);
-        // line 472
+        // line 476
         echo "
     ";
-        // line 473
+        // line 477
         $this->displayBlock('footer', $context, $blocks);
-        // line 488
+        // line 492
         echo "    </body>
 </html>
 ";
@@ -532,7 +532,14 @@ class __TwigTemplate_ccc56933fdf2efcf7c76148e4c0e6f42 extends Template
                         <ul id=\"tables-nav\" class=\"nav-content collapse \" data-bs-parent=\"#sidebar-nav\">
                             ";
         // line 415
-        echo "                           
+        echo "                         <li>
+                                 <a href=\"";
+        // line 416
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_index");
+        echo "\"> 
+                                    <i class=\"bi bi-circle\"></i><span>AnimalsCategory</span>
+                                </a>
+                            </li>  
                            
                         </ul>
                     </li><!-- End Tables Nav -->
@@ -554,7 +561,7 @@ class __TwigTemplate_ccc56933fdf2efcf7c76148e4c0e6f42 extends Template
 
                     <li class=\"nav-item\">
                         <a class=\"nav-link collapsed\" href=\"";
-        // line 436
+        // line 440
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("display_sign-in");
         echo "\">
                             <i class=\"bi bi-card-list\"></i>
@@ -564,7 +571,7 @@ class __TwigTemplate_ccc56933fdf2efcf7c76148e4c0e6f42 extends Template
 
                     <li class=\"nav-item\">
                         <a class=\"nav-link collapsed\" href=\"";
-        // line 443
+        // line 447
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("display_sign-up");
         echo "\">
                             <i class=\"bi bi-box-arrow-in-right\"></i>
@@ -598,7 +605,7 @@ class __TwigTemplate_ccc56933fdf2efcf7c76148e4c0e6f42 extends Template
 
     }
 
-    // line 467
+    // line 471
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -608,7 +615,7 @@ class __TwigTemplate_ccc56933fdf2efcf7c76148e4c0e6f42 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 468
+        // line 472
         echo "
 
 
@@ -621,7 +628,7 @@ class __TwigTemplate_ccc56933fdf2efcf7c76148e4c0e6f42 extends Template
 
     }
 
-    // line 473
+    // line 477
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -631,7 +638,7 @@ class __TwigTemplate_ccc56933fdf2efcf7c76148e4c0e6f42 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 474
+        // line 478
         echo "        <!-- ======= Footer ======= -->
         <footer id=\"footer\" class=\"footer\">
             <div class=\"copyright\">
@@ -661,7 +668,7 @@ class __TwigTemplate_ccc56933fdf2efcf7c76148e4c0e6f42 extends Template
 
     public function getDebugInfo()
     {
-        return array (  635 => 474,  625 => 473,  612 => 468,  602 => 467,  568 => 443,  558 => 436,  535 => 415,  527 => 399,  520 => 281,  510 => 280,  491 => 269,  448 => 222,  443 => 220,  440 => 219,  438 => 218,  434 => 217,  408 => 194,  391 => 180,  374 => 166,  256 => 51,  249 => 46,  239 => 45,  228 => 41,  222 => 38,  218 => 37,  214 => 36,  210 => 35,  206 => 34,  202 => 33,  198 => 32,  194 => 31,  190 => 29,  180 => 28,  168 => 25,  162 => 22,  158 => 21,  154 => 20,  150 => 19,  146 => 18,  142 => 17,  138 => 16,  129 => 9,  119 => 8,  100 => 5,  88 => 488,  86 => 473,  83 => 472,  80 => 467,  78 => 280,  75 => 279,  73 => 45,  68 => 42,  66 => 28,  63 => 27,  60 => 8,  56 => 5,  50 => 1,);
+        return array (  642 => 478,  632 => 477,  619 => 472,  609 => 471,  575 => 447,  565 => 440,  538 => 416,  535 => 415,  527 => 399,  520 => 281,  510 => 280,  491 => 269,  448 => 222,  443 => 220,  440 => 219,  438 => 218,  434 => 217,  408 => 194,  391 => 180,  374 => 166,  256 => 51,  249 => 46,  239 => 45,  228 => 41,  222 => 38,  218 => 37,  214 => 36,  210 => 35,  206 => 34,  202 => 33,  198 => 32,  194 => 31,  190 => 29,  180 => 28,  168 => 25,  162 => 22,  158 => 21,  154 => 20,  150 => 19,  146 => 18,  142 => 17,  138 => 16,  129 => 9,  119 => 8,  100 => 5,  88 => 492,  86 => 477,  83 => 476,  80 => 471,  78 => 280,  75 => 279,  73 => 45,  68 => 42,  66 => 28,  63 => 27,  60 => 8,  56 => 5,  50 => 1,);
     }
 
     public function getSourceContext()
@@ -1080,7 +1087,11 @@ class __TwigTemplate_ccc56933fdf2efcf7c76148e4c0e6f42 extends Template
                                     <i class=\"bi bi-circle\"></i><span>Data Tables</span>
                                 </a>
                             </li> #}
-                           
+                         <li>
+                                 <a href=\"{{path('app_user_index')}}\"> 
+                                    <i class=\"bi bi-circle\"></i><span>AnimalsCategory</span>
+                                </a>
+                            </li>  
                            
                         </ul>
                     </li><!-- End Tables Nav -->
