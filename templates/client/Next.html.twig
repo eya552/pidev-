@@ -1,0 +1,156 @@
+{% extends 'client/base.html.twig' %}
+
+{% block title %}Hello ClientController!{% endblock %}
+
+{% block body %}
+
+<!-- PAGE TITLE
+        ================================================== -->
+        <section class="page-title-section bg-img cover-background left-overlay-dark" data-overlay-dark="8" data-background="{{asset('assets/client/img/banner/page-title.jpg')}}">
+            <div class="containers">
+                <div class="page-title mx-1-6 mx-lg-2-0 mx-xl-2-6 mx-xxl-2-9">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>cree un devis </h1>
+                        </div>
+                        <div class="col-md-12">
+                            <ul class="ps-0">
+                                <li><a href="index-2.html">Home</a></li>
+                                <li><a href="#!">espace animal </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-inline-block p-3 rounded-circle bg-primary position-absolute z-index-1 top-35 right-20 ani-top-bottom"></div>
+            <div class="d-inline-block p-2 rounded-circle bg-secondary position-absolute z-index-1 top-25 left-10 ani-top-bottom"></div>
+            <div class="d-inline-block bg-white p-3 ani-zoomin rounded-circle position-absolute bottom-5 left-10 opacity1 z-index-1"></div>
+        </section>
+
+        <!-- CONTACT FORM
+        ================================================== -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-xl-4 mb-2-9 mb-lg-0 wow fadeIn" data-wow-delay="200ms">
+                        <div class="pe-lg-3 mt-n1-9">
+                            <div class="card card-style8 mt-1-9 wow fadeIn" data-wow-delay="200ms">
+                                <div class="card-body p-1-9">
+                                    <div class="media">
+                                        <div>
+                                            <i class="ti-location-pin text-white"></i>
+                                        </div>
+                                        <div class="media-body ms-3">
+                                            <h4 class="h5">Location</h4>
+                                            <span>66 Guild Street 512B, Great North Town.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-style8 mt-1-9 wow fadeIn" data-wow-delay="400ms">
+                                <div class="card-body p-1-9">
+                                    <div class="media">
+                                        <div>
+                                            <i class="ti-mobile text-white"></i>
+                                        </div>
+                                        <div class="media-body ms-3">
+                                            <h4 class="h5">Phone Number</h4>
+                                            <span class="d-block">(+44) 123 456 789</span>
+                                            <span>(+1) 234-567-9874</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-style8 mt-1-9 wow fadeIn" data-wow-delay="600ms">
+                                <div class="card-body p-1-9">
+                                    <div class="media">
+                                        <div>
+                                            <i class="ti-email text-white"></i>
+                                        </div>
+                                        <div class="media-body ms-3">
+                                            <h4 class="h5">Email Address</h4>
+                                            <span class="d-block">example@yourdomain.com</span>
+                                            <span>info@yourdomain.com</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-xl-8 wow fadeIn" data-wow-delay="400ms">
+                        <div class="contact-form p-4 p-md-5 ms-xl-3">
+                            <div class="title-style2 mb-2-2">
+                                <h2>À propos de votre animal </h2>
+                            </div>
+                            <form class="quform" action="https://insurshtml.websitelayout.net/quform/contact.php" method="post" enctype="multipart/form-data" onclick="">
+                                <div class="quform-elements">
+                                    <div class="row">
+                                        <!-- Begin Text input element -->
+        
+    </div>
+    <div class='right-containers'>
+    
+      <div class='puppy'>
+        <img src="{{asset('https://www.francetransactions.com/local/cache-vignettes/L1200xH630/dea9ae2f057cdfe3fa11cfceb4d47a-def61.jpg' )}}"
+      </div>
+    <div class='set' >
+      <div class='media-body ms-3'>
+        <label for='pets-breed'>Race de l'animal  </label>
+        <input id='pets-breed' placeholder="Race " type='text'>
+      
+      </div>
+    </div>
+    <div class='set'>
+      <div class='quform-element form-group'>
+        <label for='pet-gender-female'>Est-ce que l'animal est stérilisé ?</label>
+        <div class='radio-containers'>
+          <input checked='' id='pet-gender-female' name='pet-gender' type='radio' value='female'>
+          <label for='pet-gender-female'>oui</label>
+          <input id='pet-gender-male' name='pet-gender' type='radio' value='male'>
+          <label for='pet-gender-male'>non</label>
+        </div>
+      </div>
+      
+    <div class='quform-element form-group'>
+      <label for='pet-weight-0-25'>Est-ce que l'animal est vacciné ? </label>
+      <div class='radio-containers'>
+        <input checked='' id='pet-weight-0-25' name='pet-weight' type='radio' value='0-25'>
+        <label for='pet-weight-0-25'>oui</label>
+        <input id='pet-weight-25-50' name='pet-weight' type='radio' value='25-50'>
+        <label for='pet-weight-25-50'>non</label>
+        
+      </div>
+    </div> 
+      </div>
+    <div class='quform-element form-group'>
+        <label for='pet-spayed'>vous souhaitez d'assurer un autre animal</label>
+        <div class='radio-containers'>
+          <input checked='' id='pet-spayed' name='spayed-neutered' type='radio' value='spayed'>
+          <label for='pet-spayed'>oui</label>
+          <input id='pet-neutered' name='spayed-neutered' type='radio' value='neutered'>
+          <label for='pet-neutered'>non</label>
+        </div>
+      </div>
+    </div>
+</header>
+  <footer>
+      <div class='set'>
+        <a  href="{{path('app_devis')}}"class="butn-style3 me-2 my-1 my-sm-0" >Back</a>
+          </button>
+           <a  href="{{path('app_clienta')}}"class="butn-style3 me-2 my-1 my-sm-0" >Next</a>
+          </button>
+        </div>
+        
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- MAP
+        ================================================== -->
+       
+    
+
+   {% endblock %}

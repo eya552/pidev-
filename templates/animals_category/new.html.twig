@@ -1,0 +1,79 @@
+{% extends 'admin/Base.html.twig'%}
+
+{% block title %}Ajouter AnimalsCategory {% endblock %}
+{% block body %}
+
+<div class="" style='margin-left: 20% ;'>
+    <div class="pagetitle">
+      <h1>Nouveau AnimalsCategory</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+          <li class="breadcrumb-item">AnimalsCategory</li>
+          <li class="breadcrumb-item active">Nouvaeu AnimalsCategory</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+
+
+   <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Ajouter AnimalsCategory</h5>
+
+              <!-- Modifier AnimalsCategory -->
+                {{ form_start(form,{'attr': {'novalidate': 'novalidate'}})}}
+                    <div class="quform-elements">
+                    <div class="row">
+            
+
+        
+            <div class="col-md-6">
+                <div class="quform-element">
+                    <div >{{form_label(form.Espece,"Espece")}} <span class="quform-required"> *</span> </div>
+                    {{ form_widget(form.Espece,{'attr':{'class':'form-control'}}) }}</span></div>
+                    {{ form_errors(form.Espece,{'attr':{'class':'text-danger'}})}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="quform-element">
+                    <div >{{form_label(form.Race,"Race")}} <span class="quform-required"> *</span> </div>
+                    {{ form_widget(form.Race,{'attr':{'class':'form-control'}}) }}</span></div>
+                    {{ form_errors(form.Race,{'attr':{'class':'text-danger'}})}}
+                </div>
+            </div>
+                    
+
+
+                    <div class="row mb-3">
+                    <div class="col-sm-10">
+                        <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+                        
+                    </div>
+                    </div>
+
+                {{ form_end(form) }}
+
+
+            </div>
+          </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+    
+
+

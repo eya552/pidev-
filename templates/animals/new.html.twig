@@ -1,0 +1,111 @@
+{% extends 'admin/Base.html.twig'%}
+
+{% block title %}Ajouter Animal {% endblock %}
+{% block body %}
+
+<div class="" style='margin-left: 20% ;'>
+    <div class="pagetitle">
+      <h1>Nouveau Animal</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+          <li class="breadcrumb-item">Animal</li>
+          <li class="breadcrumb-item active">Nouveau Animal</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+
+
+    
+    
+
+
+   <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Ajouter Animal</h5>
+
+              <!-- Modifier Animal -->
+                {{ form_start(form,{'attr': {'novalidate': 'novalidate'}})}}
+                <div class="quform-elements">
+                    <div class="row">
+            
+                     <div class="row mb-3">
+                        <div>{{form_label(form.NomAnimal,"NomAnimal",{'attr':{'class':'col-sm-2 col-form-label'}})}} <span class="quform-required"> *</span></div>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.NomAnimal,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.NomAnimal,{'attr':{'class':'text-danger'}})}}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                    
+                        <div>{{form_label(form.DateDeNaissance,"DateDeNaissance",{'attr':{'class':'col-sm-2 col-form-label'}})}} <span class="quform-required"> *</span></div>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.DateDeNaissance,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.DateDeNaissance,{'attr':{'class':'text-danger'}})}}
+                        </div>
+                    </div>
+              
+                    <div class="row mb-3">
+                        <div>{{form_label(form.GenreAnimal,"GenreAnimal",{'attr':{'class':'col-sm-2 col-form-label'}})}} <span class="quform-required"> *</span></div>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.GenreAnimal,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.GenreAnimal,{'attr':{'class':'text-danger'}})}}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div>{{form_label(form.EstSterilise,"EstSterilise",{'attr':{'class':'col-sm-2 col-form-label'}})}} <span class="quform-required"> *</span></div>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.EstSterilise,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.EstSterilise,{'attr':{'class':'text-danger'}})}}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div>{{form_label(form.EstVaccine,"EstVaccine",{'attr':{'class':'col-sm-2 col-form-label'}})}} <span class="quform-required"> *</span></div>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.EstVaccine,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.EstVaccine,{'attr':{'class':'text-danger'}})}}
+                        </div>
+                    </div>
+                     <div class="row mb-3">
+                        <div>{{form_label(form.category,"category",{'attr':{'class':'col-sm-2 col-form-label'}})}} <span class="quform-required"> *</span></div>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.category,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.category,{'attr':{'class':'text-danger'}})}}
+                        </div>
+                    </div>
+                    
+
+
+                    <div class="row mb-3">
+                    <div class="col-sm-10">
+                        <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+                        
+                    </div>
+                    </div>
+
+                {{ form_end(form) }}
+
+
+            </div>
+          </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+    
+
+

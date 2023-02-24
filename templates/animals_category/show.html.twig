@@ -1,0 +1,44 @@
+{% extends 'admin/Base.html.twig'%}
+
+{% block body %}
+
+
+<div style='margin-left: 20% ;'>
+    <h1>AnimalsCategory</h1>
+
+    <div class="row" style="display: flex;align-items: center;justify-content: center;margin-top: 150px;">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                        <table class="card" >
+                            <tbody>
+                                <tr>
+                                    <th >Id</th>
+                                    <td >{{animals_category.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Espece</th>
+                                    <td>{{animals_category.Espece }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Race</th>
+                                    <td>{{ animals_category.Race }}</td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                        <div style=" margin-bottom: 10px;">
+                            <a href="{{ path('app_animals_category_index') }}" class=" btn btn-dark">back to list</a>
+
+                            <a href="{{ path('app_animals_category_edit', {'id': animals_category.id}) }}" class=" btn btn-warning">edit</a>
+                        </div> 
+                        
+                        {{ include('animals_category/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            <div>
+        </div>
+    </div>
+</div>
+{% endblock %}
