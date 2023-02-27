@@ -12,7 +12,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* client/footer.html.twig */
+/* client/Footer.html.twig */
 class __TwigTemplate_87d16328a7798d7996a4d5f361da2c05 extends Template
 {
     private $source;
@@ -34,10 +34,10 @@ class __TwigTemplate_87d16328a7798d7996a4d5f361da2c05 extends Template
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "client/footer.html.twig"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "client/Footer.html.twig"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "client/footer.html.twig"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "client/Footer.html.twig"));
 
         // line 1
         echo " <!-- FOOTER
@@ -176,7 +176,7 @@ class __TwigTemplate_87d16328a7798d7996a4d5f361da2c05 extends Template
 
     public function getTemplateName()
     {
-        return "client/footer.html.twig";
+        return "client/Footer.html.twig";
     }
 
     public function isTraitable()
@@ -286,6 +286,6 @@ class __TwigTemplate_87d16328a7798d7996a4d5f361da2c05 extends Template
                 </div>
             </div>
 
-        </footer>", "client/footer.html.twig", "C:\\xampp\\htdocs\\PIdev1\\templates\\client\\Footer.html.twig");
+        </footer>", "client/Footer.html.twig", "C:\\Users\\ghass\\OneDrive\\Documents\\GitHub\\pidev-\\templates\\client\\Footer.html.twig");
     }
 }

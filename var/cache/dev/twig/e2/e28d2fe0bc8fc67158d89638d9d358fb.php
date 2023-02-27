@@ -120,6 +120,6 @@ class __TwigTemplate_7ef496d76b0bfe21c6c549930a50f9f9 extends Template
 {% block body %}
 
 
-{% endblock %}", "client/EspaceClient.html.twig", "C:\\xampp\\htdocs\\PIdev1\\templates\\client\\EspaceClient.html.twig");
+{% endblock %}", "client/EspaceClient.html.twig", "C:\\Users\\ghass\\OneDrive\\Documents\\GitHub\\pidev-\\templates\\client\\EspaceClient.html.twig");
     }
 }

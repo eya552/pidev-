@@ -120,6 +120,6 @@ class __TwigTemplate_77b5fcb0bb3f1a1b3a3f21943146ab24 extends Template
 {% block body %}
 
 
-{% endblock %}", "client/EspaceVeterinaire.html.twig", "C:\\xampp\\htdocs\\PIdev1\\templates\\client\\EspaceVeterinaire.html.twig");
+{% endblock %}", "client/EspaceVeterinaire.html.twig", "C:\\Users\\ghass\\OneDrive\\Documents\\GitHub\\pidev-\\templates\\client\\EspaceVeterinaire.html.twig");
     }
 }

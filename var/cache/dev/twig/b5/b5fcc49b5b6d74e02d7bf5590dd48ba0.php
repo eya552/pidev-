@@ -972,6 +972,6 @@ class __TwigTemplate_00c5a5af40468d8c7a54ee2406f41e98 extends Template
 
 
 {% endblock %}
-", "client/home.html.twig", "C:\\xampp\\htdocs\\PIdev1\\templates\\client\\home.html.twig");
+", "client/home.html.twig", "C:\\Users\\ghass\\OneDrive\\Documents\\GitHub\\pidev-\\templates\\client\\home.html.twig");
     }
 }

@@ -12,7 +12,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* client/header.html.twig */
+/* client/Header.html.twig */
 class __TwigTemplate_cc715f59b2f63b62b9175aa552c7a013 extends Template
 {
     private $source;
@@ -34,10 +34,10 @@ class __TwigTemplate_cc715f59b2f63b62b9175aa552c7a013 extends Template
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "client/header.html.twig"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "client/Header.html.twig"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "client/header.html.twig"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "client/Header.html.twig"));
 
         // line 1
         echo " <!-- HEADER
@@ -161,7 +161,7 @@ class __TwigTemplate_cc715f59b2f63b62b9175aa552c7a013 extends Template
 
     public function getTemplateName()
     {
-        return "client/header.html.twig";
+        return "client/Header.html.twig";
     }
 
     public function isTraitable()
@@ -257,6 +257,6 @@ class __TwigTemplate_cc715f59b2f63b62b9175aa552c7a013 extends Template
                     </div>
                 </div>
             </div>
-        </header>", "client/header.html.twig", "C:\\xampp\\htdocs\\PIdev1\\templates\\client\\Header.html.twig");
+        </header>", "client/Header.html.twig", "C:\\Users\\ghass\\OneDrive\\Documents\\GitHub\\pidev-\\templates\\client\\Header.html.twig");
     }
 }

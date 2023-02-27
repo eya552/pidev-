@@ -397,6 +397,6 @@ class __TwigTemplate_af6156456029b745f77b855416ecf6b3 extends Template
 
 
 
-{% endblock %}", "client/Actualites.html.twig", "C:\\xampp\\htdocs\\PIdev1\\templates\\client\\Actualites.html.twig");
+{% endblock %}", "client/Actualites.html.twig", "C:\\Users\\ghass\\OneDrive\\Documents\\GitHub\\pidev-\\templates\\client\\Actualites.html.twig");
     }
 }

@@ -1102,6 +1102,6 @@ class __TwigTemplate_a3496c9090325bb5dca89c972c072589 extends Template
     </div>
   </div>
  
-{% endblock %}", "admin/tables.html.twig", "C:\\xampp\\htdocs\\PIdev1\\templates\\admin\\tables.html.twig");
+{% endblock %}", "admin/tables.html.twig", "C:\\Users\\ghass\\OneDrive\\Documents\\GitHub\\pidev-\\templates\\admin\\tables.html.twig");
     }
 }

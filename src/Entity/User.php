@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
@@ -26,7 +27,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Email(message:"The eamil ' {{ value }} ' is not a valid email")]
     #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
     private ?string $email = null;
-
+    #[Assert\Regex(
+        pattern: "/^[^0-9]*$/",
+        message: "Le nom ne doit pas contenir de chiffres"
+    )]
     #[ORM\Column]
     #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
     private array $roles = [];
@@ -40,11 +44,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
+    #[Assert\Regex(
+        pattern: "/^[^0-9]*$/",
+        message: "Le nom ne doit pas contenir de chiffres"
+    )]
 
     private ?string $FirestName = null;
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
+    #[Assert\Regex(
+        pattern: "/^[^0-9]*$/",
+        message: "Le nom ne doit pas contenir de chiffres"
+    )]
 
     private ?string $LastName = null;
 
@@ -68,7 +80,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
     #[Assert\Date(message:"The date '{{ value }}' is not a valid date format (yyyy-mm-dd).")]
-
+    
+    /**
+     * @var string A "Y-m-d" formatted value
+     * @Assert\Date
+     *  @Groups("post:read")*/
     private ?\DateTimeInterface $DateOfBirth = null;
 
     #[ORM\Column(type: Types::ARRAY)]
@@ -83,6 +99,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
+    #[Assert\Regex(
+        pattern: "/^[^0-9]*$/",
+        message: "Le nom ne doit pas contenir de chiffres"
+    )]
 
     private ?string $paimentMethod = null;
 
@@ -240,13 +260,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->DateOfBirth;
     }
 
-    public function setDateOfBirth(\DateTimeInterface $DateOfBirth): self
+    public function setDateOfBirth(?\DateTimeInterface $DateOfBirth): self
     {
         $this->DateOfBirth = $DateOfBirth;
 
         return $this;
     }
-
+    public function __toString()
+    {
+        return $this->getDateOfBirth();
+    }
     public function getPetsListId(): array
     {
         return $this->PetsListId;

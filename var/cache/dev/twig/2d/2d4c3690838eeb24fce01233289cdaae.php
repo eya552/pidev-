@@ -1209,6 +1209,6 @@ class __TwigTemplate_dff40bf3e76f0ceb457738d157c6e384 extends Template
       </div>
     </div>
   </div>
-{% endblock %}", "admin/profile.html.twig", "C:\\xampp\\htdocs\\PIdev1\\templates\\admin\\profile.html.twig");
+{% endblock %}", "admin/profile.html.twig", "C:\\Users\\ghass\\OneDrive\\Documents\\GitHub\\pidev-\\templates\\admin\\profile.html.twig");
     }
 }
