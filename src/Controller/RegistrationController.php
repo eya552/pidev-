@@ -15,13 +15,17 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use DateTime;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\File;
+
+
 
 
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+    #[Route('/register', name: 'app_register',methods: ['GET', 'POST'])]
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager,SluggerInterface $slugger): Response
     {
 
         $user = new User();
@@ -29,7 +33,34 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // get the form data
+            // /** @var UploadedFile $imageFile */
+ 
+            $imageFile = $form->get('photo')->getData();
+
+            // this condition is needed because the 'brochure' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $user->setImage($newFilename);
+            }
+
+            // ... persist the $product variable or any other work
         $formData = $form->getData();
 
 
@@ -48,6 +79,9 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $user->setImage(
+                new File($this->getParameter('images_directory').'/'.$user->getImage())
+            );
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
@@ -60,6 +94,7 @@ class RegistrationController extends AbstractController
         }
 
         return $this->render('registration/register.html.twig', [
+            'user' => $user,
             'registrationForm' => $form->createView(),
         ]);
     }

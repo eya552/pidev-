@@ -14,6 +14,10 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
+use Symfony\Component\Validator\Constraints\File;
 
 
 
@@ -45,7 +49,32 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('FirestName')
             ->add('LastName')
-            ->add('image')
+            ->add('photo', FileType::class, [
+                'label' => 'Your Photo (Profile Photo)',
+
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false,
+
+                // make it optional so you don't have to re-upload the PDF file
+                // every time you edit the Product details
+                'required' => false,
+
+                // unmapped fields can't define their validation using annotations
+                // in the associated entity, so you can use the PHP constraint classes
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/gif',
+                            'image/jpeg',
+                            'image/jpg',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid Image',
+                    ])
+                ],
+            ])
+                
+            ->add('PetsListId')
             ->add('Adress')
             ->add('tel')
             ->add('DateOfBirth', DateType::class, [
@@ -75,5 +104,8 @@ class RegistrationFormType extends AbstractType
         $resolver->setDefaults([
             'data_class' => User::class,
         ]);
+    
+        
     }
+
 }

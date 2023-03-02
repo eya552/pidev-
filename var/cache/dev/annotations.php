@@ -168,6 +168,8 @@ return [[
 '[C]App%5CEntity%5CUser%23getDateOfBirth' => 1,
 'App%5CEntity%5CUser%23setDateOfBirth' => 0,
 '[C]App%5CEntity%5CUser%23setDateOfBirth' => 1,
+'App%5CEntity%5CUser%23__toString' => 0,
+'[C]App%5CEntity%5CUser%23__toString' => 1,
 'App%5CEntity%5CUser%23getPetsListId' => 0,
 '[C]App%5CEntity%5CUser%23getPetsListId' => 1,
 'App%5CEntity%5CUser%23setPetsListId' => 0,
@@ -192,12 +194,13 @@ return [[
 '[C]App%5CEntity%5CUser%24FirestName' => 1,
 'App%5CEntity%5CUser%24LastName' => 0,
 '[C]App%5CEntity%5CUser%24LastName' => 1,
-'App%5CEntity%5CUser%24image' => 0,
+'App%5CEntity%5CUser%24image' => 2,
 '[C]App%5CEntity%5CUser%24image' => 1,
 'App%5CEntity%5CUser%24Adress' => 0,
 '[C]App%5CEntity%5CUser%24Adress' => 1,
 'App%5CEntity%5CUser%24tel' => 0,
 '[C]App%5CEntity%5CUser%24tel' => 1,
+'App%5CEntity%5CUser%24DateOfBirth' => 3,
 '[C]App%5CEntity%5CUser%24DateOfBirth' => 1,
 'App%5CEntity%5CUser%24PetsListId' => 0,
 '[C]App%5CEntity%5CUser%24PetsListId' => 1,
@@ -747,10 +750,112 @@ return [[
 '[C]Symfony%5CComponent%5CSecurity%5CHttp%5CController%5CUserValueResolver%23resolve' => 1,
 'Symfony%5CComponent%5CSecurity%5CHttp%5CController%5CUserValueResolver%24tokenStorage' => 0,
 '[C]Symfony%5CComponent%5CSecurity%5CHttp%5CController%5CUserValueResolver%24tokenStorage' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%23getName' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%23getName' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%23setName' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%23setName' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%23getOriginalName' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%23getOriginalName' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%23setOriginalName' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%23setOriginalName' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%23getMimeType' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%23getMimeType' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%23setMimeType' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%23setMimeType' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%23getSize' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%23getSize' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%23setSize' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%23setSize' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%23getDimensions' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%23getDimensions' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%23setDimensions' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%23setDimensions' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%23getWidth' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%23getWidth' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%23getHeight' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%23getHeight' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%23getHtmlDimensions' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%23getHtmlDimensions' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%24name' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%24name' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%24originalName' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%24originalName' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%24mimeType' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%24mimeType' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%24size' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%24size' => 1,
+'Vich%5CUploaderBundle%5CEntity%5CFile%24dimensions' => 0,
+'[C]Vich%5CUploaderBundle%5CEntity%5CFile%24dimensions' => 1,
 
 ], [
 
 0 => [],
-1 => 1677414853,
+1 => 1677632880,
+2 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Vich\\UploaderBundle\\Mapping\\Annotation\\UploadableField'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Vich\\UploaderBundle\\Mapping\\Annotation\\UploadableField')),
+        ],
+        null,
+        [
+            'Vich\\UploaderBundle\\Mapping\\Annotation\\UploadableField' => [
+                'mapping' => [
+                    'user_image',
+                ],
+                'fileNameProperty' => [
+                    'image',
+                ],
+                'size' => [
+                    null,
+                ],
+                'mimeType' => [
+                    null,
+                ],
+                'originalName' => [
+                    null,
+                ],
+                'dimensions' => [
+                    null,
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+3 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Validator\\Constraints\\Date'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Date')),
+            clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'groups' => [
+                    [
+                        'Default',
+                    ],
+                ],
+            ],
+            'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
+                'groups' => [
+                    1 => [
+                        'post:read',
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[1],
+        ],
+        []
+    );
+},
 
 ]];

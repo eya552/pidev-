@@ -51,16 +51,16 @@
                     </div>
                     <div class="col-12">
                       {{form_row(registrationForm.PetsListId)}}
-                     
+
+
 
                       <input type="PetsListId" name="PetsListId" class="form-control" id="YourIdAnimalList " required>
                       <div class="invalid-feedback">Please, enter your enter your pets ID list!</div>
                     </div>
                     <div class="col-12">
-                     {{form_row(registrationForm.image)}}
-                     
-                      <input type="image" name="image" class="form-control" id="yourIdContrat" required>
-                      <div class="invalid-feedback">Please enter enter your Id Contrat!</div>
+                     {{form_row(registrationForm.photo)}}
+                     <a href="{{ asset('uploads/images/' ~ user.getImage) }}">View photo </a>
+                      <div class="invalid-feedback">Please enter enter your image </div>
                     </div>
 
                     <div class="col-12">
