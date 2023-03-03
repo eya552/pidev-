@@ -17,14 +17,15 @@ use DateTime;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\File;
-
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register', name: 'app_register',methods: ['GET', 'POST'])]
+    #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager,SluggerInterface $slugger): Response
     {
 
@@ -82,6 +83,7 @@ class RegistrationController extends AbstractController
             $user->setImage(
                 new File($this->getParameter('images_directory').'/'.$user->getImage())
             );
+            
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
@@ -90,12 +92,23 @@ class RegistrationController extends AbstractController
                 $user,
                 $authenticator,
                 $request
+        
             );
+            return $this->redirectToRoute('index.html.twig', [], Response::HTTP_SEE_OTHER);
         }
-
+        
         return $this->render('registration/register.html.twig', [
             'user' => $user,
             'registrationForm' => $form->createView(),
         ]);
     }
+
+    public function image(string $filename): Response
+{
+    $path = $this->getParameter('uploads_directory') . '/images/' . $filename;
+
+    // Return a binary response with the image file
+    return new BinaryFileResponse($path);
+}
+
 }

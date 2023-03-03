@@ -102,6 +102,8 @@ return [[
 '[C]App%5CController%5CRegistrationController' => 1,
 'App%5CController%5CRegistrationController%23register' => 0,
 '[C]App%5CController%5CRegistrationController%23register' => 1,
+'App%5CController%5CRegistrationController%23image' => 0,
+'[C]App%5CController%5CRegistrationController%23image' => 1,
 'App%5CController%5CSecurityController' => 0,
 '[C]App%5CController%5CSecurityController' => 1,
 'App%5CController%5CSecurityController%23login' => 0,
@@ -194,13 +196,13 @@ return [[
 '[C]App%5CEntity%5CUser%24FirestName' => 1,
 'App%5CEntity%5CUser%24LastName' => 0,
 '[C]App%5CEntity%5CUser%24LastName' => 1,
-'App%5CEntity%5CUser%24image' => 2,
+'App%5CEntity%5CUser%24image' => 0,
 '[C]App%5CEntity%5CUser%24image' => 1,
 'App%5CEntity%5CUser%24Adress' => 0,
 '[C]App%5CEntity%5CUser%24Adress' => 1,
 'App%5CEntity%5CUser%24tel' => 0,
 '[C]App%5CEntity%5CUser%24tel' => 1,
-'App%5CEntity%5CUser%24DateOfBirth' => 3,
+'App%5CEntity%5CUser%24DateOfBirth' => 2,
 '[C]App%5CEntity%5CUser%24DateOfBirth' => 1,
 'App%5CEntity%5CUser%24PetsListId' => 0,
 '[C]App%5CEntity%5CUser%24PetsListId' => 1,
@@ -792,42 +794,8 @@ return [[
 ], [
 
 0 => [],
-1 => 1677632880,
+1 => 1677806069,
 2 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Vich\\UploaderBundle\\Mapping\\Annotation\\UploadableField'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Vich\\UploaderBundle\\Mapping\\Annotation\\UploadableField')),
-        ],
-        null,
-        [
-            'Vich\\UploaderBundle\\Mapping\\Annotation\\UploadableField' => [
-                'mapping' => [
-                    'user_image',
-                ],
-                'fileNameProperty' => [
-                    'image',
-                ],
-                'size' => [
-                    null,
-                ],
-                'mimeType' => [
-                    null,
-                ],
-                'originalName' => [
-                    null,
-                ],
-                'dimensions' => [
-                    null,
-                ],
-            ],
-        ],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
-3 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Validator\\Constraints\\Date'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Date')),

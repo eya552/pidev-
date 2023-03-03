@@ -1,3 +1,6 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+app_image:
+    path: /uploads/images/{filename<.+>}
+    controller: App\Controller\RegistrationController::image

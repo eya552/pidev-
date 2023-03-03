@@ -60,6 +60,10 @@
                     <div class="col-12">
                      {{form_row(registrationForm.photo)}}
                      <a href="{{ asset('uploads/images/' ~ user.getImage) }}">View photo </a>
+                     {% if user.image %}
+                     <img src="{{ path('app_image', {'filename': user.image}) }}" alt="View photo">
+                     {% endif %}
+
                       <div class="invalid-feedback">Please enter enter your image </div>
                     </div>
 

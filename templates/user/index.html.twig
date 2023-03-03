@@ -33,8 +33,7 @@
                 <td>{{ user.password }}</td>
                 <td>{{ user.FirestName }}</td>
                 <td>{{ user.LastName }}</td>
-                <td>{{ user.image }}</td>
-                <td>{{ user.Adress }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ user.getImage) }}" style=" width:60px; height:50px; " alt=""/></td>                 <td>{{ user.Adress }}</td>
                 <td>{{ user.tel }}</td>
                 <td>{{ user.DateOfBirth ? user.DateOfBirth|date('Y-m-d') : '' }}</td>
                 <td>{{ user.PetsListId ? user.PetsListId|join(', ') : '' }}</td>

@@ -24,7 +24,7 @@ return [
         '/Client/EspaceVeterinaire' => [[['_route' => 'app_EspaceVeterinaire', '_controller' => 'App\\Controller\\ClientController::EspaceVeterinaire'], null, null, null, false, false, null]],
         '/Client/BilansDesoin' => [[['_route' => 'app_BilansDesoin', '_controller' => 'App\\Controller\\ClientController::BilansDesoin'], null, null, null, false, false, null]],
         '/Client/BilanDesoin' => [[['_route' => 'app_BilanDesoin', '_controller' => 'App\\Controller\\ClientController::BilanDesoin'], null, null, null, false, false, null]],
-        '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
         '/user' => [[['_route' => 'app_user_index', '_controller' => 'App\\Controller\\UserController::index'], null, ['GET' => 0], null, true, false, null]],
@@ -37,39 +37,43 @@ return [
     ],
     [ // $regexpList
         0 => '{^(?'
-                .'|/user/([^/]++)(?'
-                    .'|(*:24)'
-                    .'|/edit(*:36)'
-                    .'|(*:43)'
+                .'|/u(?'
+                    .'|ser/([^/]++)(?'
+                        .'|(*:27)'
+                        .'|/edit(*:39)'
+                        .'|(*:46)'
+                    .')'
+                    .'|ploads/images/(.+)(*:72)'
                 .')'
                 .'|/_(?'
-                    .'|error/(\\d+)(?:\\.([^/]++))?(*:82)'
-                    .'|wdt/([^/]++)(*:101)'
+                    .'|error/(\\d+)(?:\\.([^/]++))?(*:111)'
+                    .'|wdt/([^/]++)(*:131)'
                     .'|profiler/([^/]++)(?'
                         .'|/(?'
-                            .'|search/results(*:147)'
-                            .'|router(*:161)'
+                            .'|search/results(*:177)'
+                            .'|router(*:191)'
                             .'|exception(?'
-                                .'|(*:181)'
-                                .'|\\.css(*:194)'
+                                .'|(*:211)'
+                                .'|\\.css(*:224)'
                             .')'
                         .')'
-                        .'|(*:204)'
+                        .'|(*:234)'
                     .')'
                 .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
-        24 => [[['_route' => 'app_user_show', '_controller' => 'App\\Controller\\UserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        36 => [[['_route' => 'app_user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        43 => [[['_route' => 'app_user_delete', '_controller' => 'App\\Controller\\UserController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        82 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
-        101 => [[['_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'], ['token'], null, null, false, true, null]],
-        147 => [[['_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'], ['token'], null, null, false, false, null]],
-        161 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
-        181 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
-        194 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
-        204 => [
+        27 => [[['_route' => 'app_user_show', '_controller' => 'App\\Controller\\UserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        39 => [[['_route' => 'app_user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        46 => [[['_route' => 'app_user_delete', '_controller' => 'App\\Controller\\UserController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        72 => [[['_route' => 'app_image', '_controller' => 'App\\Controller\\RegistrationController::image'], ['filename'], null, null, false, true, null]],
+        111 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
+        131 => [[['_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'], ['token'], null, null, false, true, null]],
+        177 => [[['_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'], ['token'], null, null, false, false, null]],
+        191 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
+        211 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
+        224 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
+        234 => [
             [['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

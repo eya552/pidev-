@@ -49,14 +49,9 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('FirestName')
             ->add('LastName')
-            ->add('photo', FileType::class, [
-                'label' => 'Your Photo (Profile Photo)',
-
-                // unmapped means that this field is not associated to any entity property
+            ->add('photo',FileType::class, [
+                'label'=>'Photo',
                 'mapped' => false,
-
-                // make it optional so you don't have to re-upload the PDF file
-                // every time you edit the Product details
                 'required' => false,
 
                 // unmapped fields can't define their validation using annotations
