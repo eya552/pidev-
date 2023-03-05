@@ -18,6 +18,9 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 
 
 
@@ -69,7 +72,6 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
                 
-            ->add('PetsListId')
             ->add('Adress')
             ->add('tel')
             ->add('DateOfBirth', DateType::class, [
@@ -79,7 +81,12 @@ class RegistrationFormType extends AbstractType
                 'input' => 'datetime',
                 'years' => range(date('Y'), date('Y')-100),
             ])
-            ->add('PetsListId')
+            ->add('PetsListId', CollectionType::class, [
+                'entry_type' => TextType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+            ])
             ->add('IdContrat')
             ->add('paimentMethod')
             ->add('agreeTerms', CheckboxType::class, [

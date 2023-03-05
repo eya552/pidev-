@@ -54,15 +54,13 @@
 
 
 
-                      <input type="PetsListId" name="PetsListId" class="form-control" id="YourIdAnimalList " required>
+                      <input type="CollectionType" name="PetsListId" class="form-control" id="YourIdAnimalList " required>
                       <div class="invalid-feedback">Please, enter your enter your pets ID list!</div>
                     </div>
                     <div class="col-12">
                      {{form_row(registrationForm.photo)}}
                      <a href="{{ asset('uploads/images/' ~ user.getImage) }}">View photo </a>
-                     {% if user.image %}
-                     <img src="{{ path('app_image', {'filename': user.image}) }}" alt="View photo">
-                     {% endif %}
+                      <input type="file" name="photo" class="form-control" id="yourIphoto" required>
 
                       <div class="invalid-feedback">Please enter enter your image </div>
                     </div>

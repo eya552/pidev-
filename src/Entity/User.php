@@ -20,11 +20,8 @@ use Vich\UploaderBundle\Form\Type\VichFileType;
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
+    #[ORM\GeneratedValue]                                                                                                                                                                                                                                                                                                                                                                                                                                                       
     #[ORM\Column]
-    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
-    #[Assert\Positive(message:"The value must be a positive number")]
-
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
