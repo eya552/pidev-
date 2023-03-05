@@ -20,6 +20,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 
 
@@ -70,8 +71,7 @@ class RegistrationController extends AbstractController
         $DateOfBirth = DateTime::createFromFormat('Y-m-d', $formData->getDateOfBirth()->format('Y-m-d'));
         
         // set the date of birth on the user object
-        $user->setDateOfBirth($DateOfBirth = DateTime::createFromFormat('Y-m-d', $formData['DateOfBirth'])
-    );
+        $user->setDateOfBirth($DateOfBirth = DateTime::createFromFormat('Y-m-d', $formData['DateOfBirth']));
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -83,7 +83,7 @@ class RegistrationController extends AbstractController
             $user->setImage(
                 new File($this->getParameter('images_directory').'/'.$user->getImage())
             );
-            
+
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
@@ -94,7 +94,6 @@ class RegistrationController extends AbstractController
                 $request
         
             );
-            return $this->redirectToRoute('index.html.twig', [], Response::HTTP_SEE_OTHER);
         }
         
         return $this->render('registration/register.html.twig', [
