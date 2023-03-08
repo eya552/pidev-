@@ -51,6 +51,7 @@
                             <a href="{{ path('app_animals1_afficher') }}" class=" btn btn-dark">back to list</a>
 
                             <a href="{{ path('app_animals1_edit', {'id': animal.id}) }}" class=" btn btn-warning">edit</a>
+                            <a href="{{ path('app_devis1', {'id': animal.id}) }}" class=" btn btn-warning">Devis</a>
                         </div> 
                         
                         {{ include('client/deleteAnimal.html.twig') }}

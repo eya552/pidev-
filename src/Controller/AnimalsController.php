@@ -41,7 +41,7 @@ class AnimalsController extends AbstractController
         ]);
     }
 
-    
+
 
     #[Route('/{id}', name: 'app_animals_show', methods: ['GET'])]
     public function show(Animals $animal): Response
@@ -72,13 +72,107 @@ class AnimalsController extends AbstractController
     #[Route('/{id}', name: 'app_animals_delete', methods: ['POST'])]
     public function delete(Request $request, Animals $animal, AnimalsRepository $animalsRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$animal->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $animal->getId(), $request->request->get('_token'))) {
             $animalsRepository->remove($animal, true);
         }
 
         return $this->redirectToRoute('app_animals_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/devis1/{id}', name: 'app_devis1', methods: ['GET', 'POST'])]
+    public function calculerDevis(Animals $animal): Response
+    {
+
+        $basePrice = 180;
+        $malePrice = 90;
+        $femalePrice = 160;
+        $sterilizationYesPrice = 100;
+        $sterilizationNoPrice = 200;
+        $vaccinationYesPrice = 70;
+        $vaccinationNoPrice = 160;
+        $prixTotal=0;
+        // Déclarer et initialiser la variable $prixTotal
+
+        // Vérifier la valeur de la stérilisation
+        if ($animal->getEstSterilise() === 'oui') {
+            $prixTotal = $basePrice;
+            $prixTotal += $sterilizationYesPrice;
+            if ($animal->getEstVaccine() === 'oui') {
+                $prixTotal += $vaccinationYesPrice;
+                if ($animal->getGenreAnimal() === 'male') {
+                    $prixTotal += $malePrice;
+                    // Rendre la vue avec le prix initial
+                    return $this->render('animals/resultat.html.twig', [
+                        'animal' => $animal,
+                        'prixTotal' => $prixTotal,
+                    ]);
+                } else {
+                    $prixTotal += $femalePrice;
+                    // Rendre la vue avec le prix initial
+                    return $this->render('animals/resultat.html.twig', [
+                        'animal' => $animal,
+                        'prixTotal' => $prixTotal,
+                    ]);
+                }
+            } else {
+                $prixTotal += $vaccinationNoPrice;
+                if ($animal->getGenreAnimal() === 'male') {
+                    $prixTotal += $malePrice;
+                    // Rendre la vue avec le prix initial
+                    return $this->render('animals/resultat.html.twig', [
+                        'animal' => $animal,
+                        'prixTotal' => $prixTotal,
+                    ]);
+                } else {
+                    $prixTotal += $femalePrice;
+                    // Rendre la vue avec le prix initial
+                    return $this->render('animals/resultat.html.twig', [
+                        'animal' => $animal,
+                        'prixTotal' => $prixTotal,
+                    ]);
+                }
+            }
+        } else {
+            $prixTotal = $basePrice;
+            $prixTotal += $sterilizationNoPrice;
+            if ($animal->getEstVaccine() === 'oui') {
+                $prixTotal += $vaccinationYesPrice;
+                if ($animal->getGenreAnimal() === 'male') {
+                    $prixTotal += $malePrice;
+                    // Rendre la vue avec le prix initial
+                    return $this->render('animals/resultat.html.twig', [
+                        'animal' => $animal,
+                        'prixTotal' => $prixTotal,
+                    ]);
+                } else {
+                    $prixTotal += $femalePrice;
+                    // Rendre la vue avec le prix initial
+                    return $this->render('animals/resultat.html.twig', [
+                        'animal' => $animal,
+                        'prixTotal' => $prixTotal,
+                    ]);
+                }
+            } else {
+                $prixTotal += $vaccinationNoPrice;
+                if ($animal->getGenreAnimal() === 'male') {
+                    $prixTotal += $malePrice;
+                    // Rendre la vue avec le prix initial
+                    return $this->render('animals/resultat.html.twig', [
+                        'animal' => $animal,
+                        'prixTotal' => $prixTotal,
+                    ]);
+                } else {
+                    $prixTotal += $femalePrice;
+                    // Rendre la vue avec le prix initial
+                    return $this->render('animals/resultat.html.twig', [
+                        'animal' => $animal,
+                        'prixTotal' => $prixTotal,
+                    ]);
+                }
+            }
+        }
+
+
+
+    }
 }
-
-
-

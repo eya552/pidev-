@@ -1,0 +1,21 @@
+{% extends 'client/Base.html.twig'%}
+
+
+{% block title %}Résultat du calcul de devis{% endblock %}
+
+{% block body %}
+<div style="margin-right:50px;margin-left:350px">
+    <h1>Résultat de la simulation de devis</h1>
+
+    <p>Animal :</p>
+    <ul>
+        <li>Nom : {{ animal.NomAnimal }}</li>
+        <li>Genre : {{ animal.GenreAnimal }}</li>
+        <li>Est stérilisé : {{ animal.EstSterilise }}</li>
+        <li>Est vacciné : {{ animal.EstVaccine }}</li>
+    </ul>
+
+    <p>Prix total du devis : {{ prixTotal }} Dinars</p>
+    
+</div>
+{% endblock %}
