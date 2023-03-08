@@ -2721,3 +2721,14 @@ c1bef3,127.0.0.1,GET,http://127.0.0.1:8000/img/logos/logo.png,1678305661,c3a537,
 c3a537,127.0.0.1,GET,http://127.0.0.1:8000/img/logos/logo.png,1678305661,,404
 5915a9,127.0.0.1,GET,http://127.0.0.1:8000/img/logos/logo.png,1678305662,19964b,404
 19964b,127.0.0.1,GET,http://127.0.0.1:8000/img/logos/logo.png,1678305662,,404
+222234,127.0.0.1,GET,http://127.0.0.1:8000/quform/images/success.png,1678317936,95ec8a,404
+95ec8a,127.0.0.1,GET,http://127.0.0.1:8000/quform/images/success.png,1678317937,,404
+5e56f1,127.0.0.1,GET,http://127.0.0.1:8000/quform/images/error.png,1678317937,88ddf3,404
+88ddf3,127.0.0.1,GET,http://127.0.0.1:8000/quform/images/error.png,1678317937,,404
+d0fefa,127.0.0.1,GET,http://127.0.0.1:8000/quform/images/close.png,1678317938,f40759,404
+f40759,127.0.0.1,GET,http://127.0.0.1:8000/quform/images/close.png,1678317938,,404
+b77f8b,127.0.0.1,GET,http://127.0.0.1:8000/quform/images/default-loading.gif,1678317938,03e35d,404
+03e35d,127.0.0.1,GET,http://127.0.0.1:8000/quform/images/default-loading.gif,1678317938,,404
+df4f72,127.0.0.1,GET,http://127.0.0.1:8000/register,1678317941,4743d8,500
+4743d8,127.0.0.1,GET,http://127.0.0.1:8000/register,1678317941,,500
+2f0213,127.0.0.1,GET,http://127.0.0.1:8000/register,1678318291,,200

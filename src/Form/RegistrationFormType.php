@@ -13,6 +13,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 
 class RegistrationFormType extends AbstractType
 {
@@ -50,9 +53,23 @@ class RegistrationFormType extends AbstractType
                     new Length(['min' => 3]),
                 ],
             ])
-            ->add('image', TextType::class, [
+            ->add('image',FileType::class, [
+                'label'=>'Photo',
+                'mapped' => false,
+                'required' => false,
+
+                // unmapped fields can't define their validation using annotations
+                // in the associated entity, so you can use the PHP constraint classes
                 'constraints' => [
-                    new NotBlank(),
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/gif',
+                            'image/jpeg',
+                            'image/jpg',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid Image',
+                    ])
                 ],
             ])
             ->add('adress', TextType::class, [
