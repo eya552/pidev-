@@ -48,7 +48,8 @@ class Animals
     #[Assert\Choice(choices: ['oui', 'non'], message: "Veuillez répondre par 'oui' ou 'non'")]
     private ?string $EstVaccine = null;
 
-    #[ORM\ManyToOne(inversedBy: 'animals')]
+    #[ORM\ManyToOne(inversedBy: 'animals', cascade: ['persist'])]
+    #[ORM\JoinColumn(name:"category_id", referencedColumnName:"id", onDelete:"CASCADE")]
     #[ORM\JoinColumn(nullable: false)]
     private ?AnimalsCategory $category = null;
 

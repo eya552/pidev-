@@ -39,6 +39,20 @@ class AnimalsRepository extends ServiceEntityRepository
         }
     }
 
+    public function getPaginatedAnimals($page,$limit)
+    {
+       $query=$this->createQueryBuilder('e')
+       ->orderBy('e.NomAnimal')
+       ->setFirstResult(($page * $limit) - $limit)
+       ->setMaxResults($limit);
+       return $query->getQuery()->getResult();
+    }
+    public function getTotalAnimals(){
+        $query=$this->createQueryBuilder('e')
+        ->select('COUNT(e)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
 //    /**
 //     * @return Animals[] Returns an array of Animals objects
 //     */

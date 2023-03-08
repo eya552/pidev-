@@ -35,7 +35,7 @@
                   </thead>
                   <tbody>
 
-                  {% for animal in animals %}
+                  {% for animal in animalsP %}
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
@@ -85,7 +85,7 @@
                   </tbody>
                 </table>
                 {% endif %}
-                <a href="{{ path('app_animals1_new') }}" class="btn btn-success text-gradient px-3 mb-0">Create new</a>
+                <a href="{{ path('app_animals1_new') }}" class="btn btn-success text-gradient px-3 mb-0">Create </a>
                   
 
               </div>
@@ -93,7 +93,14 @@
           </div>
         </div>
       </div>
-      
+      <df>
+        {% for i in 1.. ((total / limit)|round(0,'ceil')) %}
+            <de>
+                            <a href="?page={{i}}"  > {{i}} </a>
+            </de>
+             {% endfor %} 
+        </df>
+
       
     </div>
   </main>

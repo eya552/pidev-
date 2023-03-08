@@ -115,10 +115,21 @@ class ClientController extends AbstractController
 
 
     #[Route('/afficher', name: 'app_animals1_afficher', methods: ['GET'])]
-    public function index(AnimalsRepository $animalsRepository): Response
-    {
+    public function index(AnimalsRepository $animalsRepository , Request $request,): Response
+    {   $limit=4; //limite actualité par page
+        $page=(int)$request->query->get("page",1); // prendre la page 1 par défaut
+        $animalsP=$animalsRepository->getPaginatedAnimals($page,$limit); //
+        $total=$animalsRepository->getTotalAnimals(); //nombre total des actualites
+
+
         return $this->render('client/afficher.html.twig', [
             'animals' => $animalsRepository->findAll(),
+            'total'=> $total,
+            'limit'=> $limit,
+            'page'=> $page,
+            'animalsP'=> $animalsP,
+            
+
         ]);
     }
 
