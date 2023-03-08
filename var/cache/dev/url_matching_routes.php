@@ -8,27 +8,20 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
-        '/Admin/homeAdmin' => [[['_route' => 'display_home', '_controller' => 'App\\Controller\\AdminController::indexhome'], null, null, null, false, false, null]],
-        '/Admin/profile' => [[['_route' => 'display_profile', '_controller' => 'App\\Controller\\AdminController::indexProfile'], null, null, null, false, false, null]],
-        '/Admin/dashboard' => [[['_route' => 'display_dashboard', '_controller' => 'App\\Controller\\AdminController::indexdashboard'], null, null, null, false, false, null]],
-        '/Admin/signin' => [[['_route' => 'display_sign-in', '_controller' => 'App\\Controller\\AdminController::indexsignin'], null, null, null, false, false, null]],
-        '/Admin/signup' => [[['_route' => 'display_sign-up', '_controller' => 'App\\Controller\\AdminController::indexsignup'], null, null, null, false, false, null]],
-        '/Client/home' => [[['_route' => 'app_home', '_controller' => 'App\\Controller\\ClientController::home'], null, null, null, false, false, null]],
-        '/Client/header' => [[['_route' => 'app_header', '_controller' => 'App\\Controller\\ClientController::header'], null, null, null, false, false, null]],
-        '/Client/Contactus' => [[['_route' => 'app_Contactus', '_controller' => 'App\\Controller\\ClientController::contactus'], null, null, null, false, false, null]],
-        '/Client/Aboutus' => [[['_route' => 'app_Aboutus', '_controller' => 'App\\Controller\\ClientController::Aboutus'], null, null, null, false, false, null]],
-        '/Client/E404' => [[['_route' => 'app_E404', '_controller' => 'App\\Controller\\ClientController::E404'], null, null, null, false, false, null]],
-        '/Client/Actualites' => [[['_route' => 'app_Actualites', '_controller' => 'App\\Controller\\ClientController::Actualites'], null, null, null, false, false, null]],
-        '/Client/ActualiteInfo' => [[['_route' => 'app_ActualiteInfo', '_controller' => 'App\\Controller\\ClientController::ActualiteInfo'], null, null, null, false, false, null]],
-        '/Client/EspaceClient' => [[['_route' => 'app_EspaceClient', '_controller' => 'App\\Controller\\ClientController::EspaceClient'], null, null, null, false, false, null]],
-        '/Client/EspaceVeterinaire' => [[['_route' => 'app_EspaceVeterinaire', '_controller' => 'App\\Controller\\ClientController::EspaceVeterinaire'], null, null, null, false, false, null]],
-        '/Client/BilansDesoin' => [[['_route' => 'app_BilansDesoin', '_controller' => 'App\\Controller\\ClientController::BilansDesoin'], null, null, null, false, false, null]],
-        '/Client/BilanDesoin' => [[['_route' => 'app_BilanDesoin', '_controller' => 'App\\Controller\\ClientController::BilanDesoin'], null, null, null, false, false, null]],
+        '/account' => [[['_route' => 'account', '_controller' => 'App\\Controller\\AccountController::index'], null, ['GET' => 0, 'POST' => 1], null, true, false, null]],
+        '/account/reset' => [[['_route' => 'passwordReset', '_controller' => 'App\\Controller\\AccountController::editAction'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/admin' => [[['_route' => 'admin_dasboard', '_controller' => 'App\\Controller\\AdminController::index'], null, null, null, true, false, null]],
+        '/admin/afficheAll' => [[['_route' => 'afficheall', '_controller' => 'App\\Controller\\AdminController::affichier'], null, null, null, false, false, null]],
+        '/banned' => [[['_route' => 'banned', '_controller' => 'App\\Controller\\BannedController::index'], null, null, null, false, false, null]],
+        '/' => [[['_route' => 'app_landing_page', '_controller' => 'App\\Controller\\LandingPageController::index'], null, null, null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
+        '/verify/email' => [[['_route' => 'app_verify_email', '_controller' => 'App\\Controller\\RegistrationController::verifyUserEmail'], null, null, null, false, false, null]],
+        '/registerVeterinaire' => [[['_route' => 'register_vet', '_controller' => 'App\\Controller\\RegistrationController::registerVetrrinaire'], null, null, null, false, false, null]],
+        '/registeremploye' => [[['_route' => 'register_emp', '_controller' => 'App\\Controller\\RegistrationController::registeremp'], null, null, null, false, false, null]],
+        '/reset-password' => [[['_route' => 'app_forgot_password_request', '_controller' => 'App\\Controller\\ResetPasswordController::request'], null, null, null, false, false, null]],
+        '/reset-password/check-email' => [[['_route' => 'app_check_email', '_controller' => 'App\\Controller\\ResetPasswordController::checkEmail'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
-        '/user' => [[['_route' => 'app_user_index', '_controller' => 'App\\Controller\\UserController::index'], null, ['GET' => 0], null, true, false, null]],
-        '/user/new' => [[['_route' => 'app_user_new', '_controller' => 'App\\Controller\\UserController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/_profiler' => [[['_route' => '_profiler_home', '_controller' => 'web_profiler.controller.profiler::homeAction'], null, null, null, true, false, null]],
         '/_profiler/search' => [[['_route' => '_profiler_search', '_controller' => 'web_profiler.controller.profiler::searchAction'], null, null, null, false, false, null]],
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
@@ -37,43 +30,41 @@ return [
     ],
     [ // $regexpList
         0 => '{^(?'
-                .'|/u(?'
-                    .'|ser/([^/]++)(?'
-                        .'|(*:27)'
-                        .'|/edit(*:39)'
-                        .'|(*:46)'
-                    .')'
-                    .'|ploads/images/(.+)(*:72)'
+                .'|/admin/(?'
+                    .'|activer/([^/]++)(*:33)'
+                    .'|desactiver/([^/]++)(*:59)'
+                    .'|email/([^/]++)(*:80)'
                 .')'
+                .'|/reset\\-password/reset(?:/([^/]++))?(*:124)'
                 .'|/_(?'
-                    .'|error/(\\d+)(?:\\.([^/]++))?(*:111)'
-                    .'|wdt/([^/]++)(*:131)'
+                    .'|error/(\\d+)(?:\\.([^/]++))?(*:163)'
+                    .'|wdt/([^/]++)(*:183)'
                     .'|profiler/([^/]++)(?'
                         .'|/(?'
-                            .'|search/results(*:177)'
-                            .'|router(*:191)'
+                            .'|search/results(*:229)'
+                            .'|router(*:243)'
                             .'|exception(?'
-                                .'|(*:211)'
-                                .'|\\.css(*:224)'
+                                .'|(*:263)'
+                                .'|\\.css(*:276)'
                             .')'
                         .')'
-                        .'|(*:234)'
+                        .'|(*:286)'
                     .')'
                 .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
-        27 => [[['_route' => 'app_user_show', '_controller' => 'App\\Controller\\UserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        39 => [[['_route' => 'app_user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        46 => [[['_route' => 'app_user_delete', '_controller' => 'App\\Controller\\UserController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        72 => [[['_route' => 'app_image', '_controller' => 'App\\Controller\\RegistrationController::image'], ['filename'], null, null, false, true, null]],
-        111 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
-        131 => [[['_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'], ['token'], null, null, false, true, null]],
-        177 => [[['_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'], ['token'], null, null, false, false, null]],
-        191 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
-        211 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
-        224 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
-        234 => [
+        33 => [[['_route' => 'activerUser', '_controller' => 'App\\Controller\\AdminController::activerUser'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        59 => [[['_route' => 'desactiverUser', '_controller' => 'App\\Controller\\AdminController::desactiverUser'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        80 => [[['_route' => 'sendMailToUser', '_controller' => 'App\\Controller\\AdminController::sendEmail'], ['email_use'], null, null, false, true, null]],
+        124 => [[['_route' => 'app_reset_password', 'token' => null, '_controller' => 'App\\Controller\\ResetPasswordController::reset'], ['token'], null, null, false, true, null]],
+        163 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
+        183 => [[['_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'], ['token'], null, null, false, true, null]],
+        229 => [[['_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'], ['token'], null, null, false, false, null]],
+        243 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
+        263 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
+        276 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
+        286 => [
             [['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

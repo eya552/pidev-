@@ -3,107 +3,53 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Serializer\Annotation\Groups;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Table(name: '`user`')]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+    #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
-    #[Assert\Email(message:"The eamil ' {{ value }} ' is not a valid email")]
-    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
     private ?string $email = null;
-    #[Assert\Regex(
-        pattern: "/^[^0-9]*$/",
-        message: "Le nom ne doit pas contenir de chiffres"
-    )]
+
     #[ORM\Column]
-    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
     private array $roles = [];
 
     /**
      * @var string The hashed password
      */
     #[ORM\Column]
-    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
     private ?string $password = null;
 
-    #[ORM\Column(length: 100)]
-    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
-    #[Assert\Regex(
-        pattern: "/^[^0-9]*$/",
-        message: "Le nom ne doit pas contenir de chiffres"
-    )]
-
-    private ?string $FirestName = null;
-
-    #[ORM\Column(length: 100)]
-    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
-    #[Assert\Regex(
-        pattern: "/^[^0-9]*$/",
-        message: "Le nom ne doit pas contenir de chiffres"
-    )]
-
-    private ?string $LastName = null;
+    #[ORM\Column(length: 255)]
+    private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
- 
+    private ?string $prenom = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
-
-    private ?string $Adress = null;
+    private ?string $adress = null;
 
     #[ORM\Column]
-    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
-    #[Assert\Positive(message:"The value must be a positive number")]
-
-
     private ?int $tel = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
-    #[Assert\Date(message:"The date '{{ value }}' is not a valid date format (yyyy-mm-dd).")]
-    
-    /**
-     * @var string A "Y-m-d" formatted value
-     * @Assert\Date
-     *  @Groups("post:read")*/
-    private ?\DateTimeInterface $DateOfBirth = null;
-
-    #[ORM\Column(type: Types::ARRAY)]
-    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
-
-    private array $PetsListId = [];
-
-    #[ORM\Column]
-    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
-
-    private ?int $IdContrat = null;
-
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
-    #[Assert\Regex(
-        pattern: "/^[^0-9]*$/",
-        message: "Le nom ne doit pas contenir de chiffres"
-    )]
+    private ?string $etat = null;
 
-    private ?string $paimentMethod = null;
+    #[ORM\Column(type: 'boolean')]
+    private $isVerified = false;
 
     public function getId(): ?int
     {
@@ -194,26 +140,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getFirestName(): ?string
+    public function getNom(): ?string
     {
-        return $this->FirestName;
+        return $this->nom;
     }
 
-    public function setFirestName(string $FirestName): self
+    public function setNom(string $nom): self
     {
-        $this->FirestName = $FirestName;
+        $this->nom = $nom;
 
         return $this;
     }
 
-    public function getLastName(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->LastName;
+        return $this->prenom;
     }
 
-    public function setLastName(string $LastName): self
+    public function setPrenom(string $prenom): self
     {
-        $this->LastName = $LastName;
+        $this->prenom = $prenom;
 
         return $this;
     }
@@ -223,7 +169,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -232,12 +178,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getAdress(): ?string
     {
-        return $this->Adress;
+        return $this->adress;
     }
 
-    public function setAdress(string $Adress): self
+    public function setAdress(string $adress): self
     {
-        $this->Adress = $Adress;
+        $this->adress = $adress;
 
         return $this;
     }
@@ -254,53 +200,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getDateOfBirth(): ?\DateTimeInterface
+    public function getEtat(): ?string
     {
-        return $this->DateOfBirth;
+        return $this->etat;
     }
 
-    public function setDateOfBirth(?\DateTimeInterface $DateOfBirth): self
+    public function setEtat(string $etat): self
     {
-        $this->DateOfBirth = $DateOfBirth;
-
-        return $this;
-    }
-    public function __toString()
-    {
-        return $this->getDateOfBirth();
-    }
-    public function getPetsListId(): array
-    {
-        return $this->PetsListId;
-    }
-
-    public function setPetsListId(array $PetsListId): self
-    {
-        $this->PetsListId = $PetsListId;
+        $this->etat = $etat;
 
         return $this;
     }
 
-    public function getIdContrat(): ?int
+    public function isVerified(): bool
     {
-        return $this->IdContrat;
+        return $this->isVerified;
     }
 
-    public function setIdContrat(int $IdContrat): self
+    public function setIsVerified(bool $isVerified): self
     {
-        $this->IdContrat = $IdContrat;
-
-        return $this;
-    }
-
-    public function getPaimentMethod(): ?string
-    {
-        return $this->paimentMethod;
-    }
-
-    public function setPaimentMethod(string $paimentMethod): self
-    {
-        $this->paimentMethod = $paimentMethod;
+        $this->isVerified = $isVerified;
 
         return $this;
     }

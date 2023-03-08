@@ -1,0 +1,337 @@
+
+
+
+
+{% block body %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+
+    <body>
+<style>
+
+    HomeContact Us Form
+    Responsive Contact Us Form in HTML and CSS | Free Code
+
+    CodingLabApril 22, 202114 Comments
+                              Facebook
+                              Twitter
+
+
+
+                              Contact-Us-Form-in-HTML-and-CSS
+
+                              Q: How to Create a Responsive Contac US Form using HTML & CSS?
+                              A: After reading the article and watching the video tutorial that I have given below, you can definitely create a beautiful contact form that I have given as an image.
+
+    Hello friends, today in this blog we are going to create Responsive Contact Us Form or Page in HTML and CSS. There are many forms of design I  have created before as well as responsive contact us form. Today we will build something better than the previous.
+
+    What is Contact Us Form or Page?
+    Contact us form means the section on the webpages form where the user can send messages to the particular person or admin of that website. The main contact us page contains two or three input fields where users need to fill in their message name and email.
+
+
+
+    I have given a beautiful image of the contact us form on the webpage. This is the contact form design that we are going to build. Many people are confused about what should be on the contact us page?. Following details, we have to include them in the contact us form or page. You can also take ideas from the given image of the Contact us form.
+
+    Website Admin Address, Email, and Phone Number
+    Email Input Box (For user)
+    Name Input box (For user)
+    Message Box (For user)
+
+    This contact form is fully responsive. If you can see a real demo of this contact page and all the codes I have used to create this CSS contact form, you can watch the full video tutorial of this form that I have given below.
+
+    Responsive Contact Us Form in HTML and CSS | Video Tutorial
+
+
+
+
+    I have provided all the HTML CSS and JavaScript code of this Contact us form design below, before getting into the source code file, you need to know some basics this about this tutorial.
+
+    As you have seen in the video tutorial of the Responsive Contact Us Form using HTML And CSS. I have used simple HTML CSS code to create this contact form design. Actually, I can add many animations and hover effects in this form but, in real life people like simple and beautiful designs more than unnecessary animation effects. As you have seen this contact form or page is fully responsive.
+
+
+
+    I have used only HTML and CSS to build this responsive contact form, I think you can easily make this type of contact after watching, if you don't, it's okay I have provided a free source code of this responsive contact us page below.
+
+                                                                                                                                                           You May Like This:
+
+                                                                                                                                                           Animated Login Form
+                                                                                                                                                           Responsive Signup Form
+                                                                                                                                                           Login Form with Social Icons
+                                                                                                                                                           Responsive Login Form Design
+
+                                                                                                                                                           Responsive Contact Us Form in HTML and CSS | Free Code
+
+                                                                                                                                                           To get the given HTML and CSS code of this responsive contact us form, first, you need to create two files, one is an HTML file and another is a CSS file on your computer. After creating these two files then you can copy the given codes in your document. You can also download all source code files from the given download button.
+
+    How do I create a contact us form in HTML? Free HTML contact form code
+    Create HTML File with the name index.html and paste the given HTML code in your document.
+
+    HTML CODE:
+    <!DOCTYPE html>
+    <!-- Created By CodingLab - www.codinglabweb.com -->
+    <html lang="en" dir="ltr">
+    <head>
+    <meta charset="UTF-8">
+    <!-- <title> Responsive Contact Us Form  | CodingLab </title>-->
+    <link rel="stylesheet" href="style.css">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <div class="container">
+    <div class="content">
+    <div class="left-side">
+    <div class="address details">
+    <i class="fas fa-map-marker-alt"></i>
+    <div class="topic">Address</div>
+    <div class="text-one">Surkhet, NP12</div>
+    <div class="text-two">Birendranagar 06</div>
+    </div>
+    <div class="phone details">
+    <i class="fas fa-phone-alt"></i>
+    <div class="topic">Phone</div>
+    <div class="text-one">+0098 9893 5647</div>
+    <div class="text-two">+0096 3434 5678</div>
+    </div>
+    <div class="email details">
+    <i class="fas fa-envelope"></i>
+    <div class="topic">Email</div>
+    <div class="text-one">codinglab@gmail.com</div>
+    <div class="text-two">info.codinglab@gmail.com</div>
+    </div>
+    </div>
+    <div class="right-side">
+    <div class="topic-text">Send us a message</div>
+    <p>If you have any work from me or any types of quries related to my tutorial, you can send me message from here. It's my pleasure to help you.</p>
+    <form action="#">
+    <div class="input-box">
+    <input type="text" placeholder="Enter your name">
+    </div>
+    <div class="input-box">
+    <input type="text" placeholder="Enter your email">
+    </div>
+    <div class="input-box message-box">
+
+    </div>
+    <div class="button">
+    <input type="button" value="Send Now" >
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </body>
+    </html>
+
+    Copy Codes
+
+    How do I design the contact us form in CSS? Free CSS contact form code
+    Create a CSS file with the name style.css and paste the given CSS code into your document.
+
+    CSS CODE:
+        /* Google Font CDN Link */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins" , sans-serif;
+    }
+    body{
+        min-height: 100vh;
+        width: 100%;
+        background: #c8e8e9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container{
+        width: 85%;
+        background: #fff;
+        border-radius: 6px;
+        padding: 20px 60px 30px 40px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+    .container .content{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .container .content .left-side{
+        width: 25%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        position: relative;
+    }
+    .content .left-side::before{
+        content: '';
+        position: absolute;
+        height: 70%;
+        width: 2px;
+        right: -15px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #afafb6;
+    }
+    .content .left-side .details{
+        margin: 14px;
+        text-align: center;
+    }
+    .content .left-side .details i{
+        font-size: 30px;
+        color: #3e2093;
+        margin-bottom: 10px;
+    }
+    .content .left-side .details .topic{
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .content .left-side .details .text-one,
+    .content .left-side .details .text-two{
+        font-size: 14px;
+        color: #afafb6;
+    }
+    .container .content .right-side{
+        width: 75%;
+        margin-left: 75px;
+    }
+    .content .right-side .topic-text{
+        font-size: 23px;
+        font-weight: 600;
+        color: #3e2093;
+    }
+    .right-side .input-box{
+        height: 50px;
+        width: 100%;
+        margin: 12px 0;
+    }
+    .right-side .input-box input,
+    .right-side .input-box textarea{
+        height: 100%;
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        background: #F0F1F8;
+        border-radius: 6px;
+        padding: 0 15px;
+        resize: none;
+    }
+    .right-side .message-box{
+        min-height: 110px;
+    }
+    .right-side .input-box textarea{
+        padding-top: 6px;
+    }
+    .right-side .button{
+        display: inline-block;
+        margin-top: 12px;
+    }
+    .right-side .button input[type="button"]{
+        color: #fff;
+        font-size: 18px;
+        outline: none;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        background: #3e2093;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .button input[type="button"]:hover{
+        background: #5029bc;
+    }
+
+    @media (max-width: 950px) {
+        .container{
+            width: 90%;
+            padding: 30px 40px 40px 35px ;
+        }
+        .container .content .right-side{
+            width: 75%;
+            margin-left: 55px;
+        }
+    }
+    @media (max-width: 820px) {
+        .container{
+            margin: 40px 0;
+            height: 100%;
+        }
+        .container .content{
+            flex-direction: column-reverse;
+        }
+        .container .content .left-side{
+            width: 100%;
+            flex-direction: row;
+            margin-top: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .container .content .left-side::before{
+            display: none;
+        }
+        .container .content .right-side{
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+
+</style>
+<div class="container">
+    <div class="content">
+        {% for flash_error in app.flashes('reset_password_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
+
+        <div class="left-side">
+            <div class="address details">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="topic">Address</div>
+                <div class="text-one">Surkhet, NP12</div>
+                <div class="text-two">Birendranagar 06</div>
+            </div>
+            <div class="phone details">
+                <i class="fas fa-phone-alt"></i>
+                <div class="topic">Phone</div>
+                <div class="text-one">+0098 9893 5647</div>
+                <div class="text-two">+0096 3434 5678</div>
+            </div>
+            <div class="email details">
+                <i class="fas fa-envelope"></i>
+                <div class="topic">Email</div>
+                <div class="text-one">codinglab@gmail.com</div>
+                <div class="text-two">info.codinglab@gmail.com</div>
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="topic-text">Request Password</div>
+            <p> Enter your email address and we will send you a
+                link to reset your password.</p>
+            <div >
+                <div class="input-box">
+                    {{ form_start(requestForm) }}
+                    {{ form_row(requestForm.email) }}
+                    <div>
+                        <small>
+                            Enter your email address and we will send you a
+                            link to reset your password.
+                        </small>
+                    </div>
+
+                    <button class="btn btn-primary">Send password reset email</button>
+                    {{ form_end(requestForm) }}
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+{% endblock %}

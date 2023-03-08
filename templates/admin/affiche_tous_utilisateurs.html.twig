@@ -1,0 +1,102 @@
+{%extends 'base_admin.html.twig'%}
+
+{% block body %}
+
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3">Liste des Utilisateurs </h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <div class="message-flash">
+                                    {% for message in app.flashes('success') %}
+                                        <div class="alert alert-success">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">prenom</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">numero du telphone</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">etat</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">email</th>
+                                        <th class="text-secondary opacity-7">Action</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for users in users %}
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ users.nom }}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">{{ users.prenom }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">{{ users.tel }}</p>
+                                        </td>
+
+                                        <td class="align-middle text-center text-sm">
+                                            {% if users.etat == "activer" %}
+                                            <span class="badge badge-sm bg-gradient-success"> {{ users.etat }} </span>
+                                            {% else %}
+                                                <span class="badge badge-sm bg-gradient-danger"> {{ users.etat }} </span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="align-middle">
+                                            {% if users.etat == "activer" %}
+                                                <button  class="btn btn-danger" name="desactiverUser"><a
+                                                            href="{{ path('desactiverUser',{'id':users.id}) }}">
+                                                        <span class="badge badge-danger">desactiver</span></a>
+
+                                                </button>
+                                            {% else %}
+                                                <button  class="btn btn-success">
+                                                    <a href="{{ path('activerUser',{'id':users.id}) }}">
+                                                        <span class="badge badge-success">activer</span></a>
+
+                                                </button>
+                                            {% endif %}
+
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">{{ users.email }}</span>
+                                        </td>
+
+                                        <td class="align-middle">
+                                            <a href="{{ path('sendMailToUser',{'email_use':users.email}) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                SendMail
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+{% endblock %}

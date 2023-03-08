@@ -80,4 +80,25 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function add(User $entity, bool $flush = true): void
+    {
+        $this->_em->persist($entity);
+        if ($flush) {
+            $this->_em->flush();
+        }
+    }
+
+
+
+    public function countUtilisateurByetat($value)
+    {
+
+        return (int)$this->createQueryBuilder('r')
+            ->andWhere('r.etat = :val')
+            ->setParameter('val', $value)
+            ->select('count(r.id)')
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
 }
