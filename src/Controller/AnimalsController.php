@@ -210,9 +210,86 @@ class AnimalsController extends AbstractController
 
     }
 
-    #[Route('/data/download', name: 'users_data_download')]
+    public function calculerDevis1(Animals $animal)
+    {
 
-    public function usersDataDownload(AnimalsRepository $animal)
+        $basePrice = 180;
+        $malePrice = 90;
+        $femalePrice = 160;
+        $sterilizationYesPrice = 100;
+        $sterilizationNoPrice = 200;
+        $vaccinationYesPrice = 70;
+        $vaccinationNoPrice = 160;
+        $prixTotal=0;
+        // Déclarer et initialiser la variable $prixTotal
+
+        // Vérifier la valeur de la stérilisation
+        if ($animal->getEstSterilise() === 'oui') {
+            $prixTotal = $basePrice;
+            $prixTotal += $sterilizationYesPrice;
+            if ($animal->getEstVaccine() === 'oui') {
+                $prixTotal += $vaccinationYesPrice;
+                if ($animal->getGenreAnimal() === 'male') {
+                    $prixTotal += $malePrice;
+                    // Rendre la vue avec le prix initial
+                   
+                } else {
+                    $prixTotal += $femalePrice;
+                    // Rendre la vue avec le prix initial
+                    
+                }
+            } else {
+                $prixTotal += $vaccinationNoPrice;
+                if ($animal->getGenreAnimal() === 'male') {
+                    $prixTotal += $malePrice;
+                    // Rendre la vue avec le prix initial
+                    return $this->render('animals/resultat.html.twig', [
+                        'animal' => $animal,
+                        'prixTotal' => $prixTotal,
+                    ]);
+                } else {
+                    $prixTotal += $femalePrice;
+                    // Rendre la vue avec le prix initial
+                    
+                }
+            }
+        } else {
+            $prixTotal = $basePrice;
+            $prixTotal += $sterilizationNoPrice;
+            if ($animal->getEstVaccine() === 'oui') {
+                $prixTotal += $vaccinationYesPrice;
+                if ($animal->getGenreAnimal() === 'male') {
+                    $prixTotal += $malePrice;
+                    // Rendre la vue avec le prix initial
+                   
+                } else {
+                    $prixTotal += $femalePrice;
+                    // Rendre la vue avec le prix initial
+                   
+                }
+            } else {
+                $prixTotal += $vaccinationNoPrice;
+                if ($animal->getGenreAnimal() === 'male') {
+                    $prixTotal += $malePrice;
+                    // Rendre la vue avec le prix initial
+                    
+                } else {
+                    $prixTotal += $femalePrice;
+                    // Rendre la vue avec le prix initial
+                   
+                }
+            }
+        }
+        return $prixTotal;
+
+
+
+    }
+
+
+    #[Route('/data/download/{id}', name: 'users_data_download')]
+
+    public function usersDataDownload(AnimalsRepository $animal,$id)
     {
         // On définit les options du PDF
         $pdfOptions = new Options();
@@ -222,7 +299,7 @@ class AnimalsController extends AbstractController
     
         // On instancie Dompdf
         $dompdf = new Dompdf($pdfOptions);
-        $animal= $animal->findAll();
+        $animal= $animal->find($id);
        
         // $classrooms= $this->getDoctrine()->getRepository(classroomRepository::class)->findAll();
     
@@ -237,7 +314,7 @@ class AnimalsController extends AbstractController
     
         // On génère le html
         $html =$this->renderView('animals/listp.html.twig',[
-            'animals'=>$animal
+            'animal'=>$animal,'prix'=>$this->calculerDevis1($animal)
         ]);
     
         $dompdf->loadHtml($html);

@@ -134,14 +134,12 @@
 
     </style>
     
-    <div align="center" >
-     <img src="/assets/client/img/logos/Vet_Assur__1_-removebg-preview.png" class="logo"  style="width:200px;  ">
-    </div>
+    
     <table class="table table-bordered">
         <thead class="thead-dark">
          
         </thead>
-        {% for animal in animals %}
+
     <tr>
       <div style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 20px; border: 2px solid #0057B8; border-radius: 5px; background-color: #F9F9F9;">
         <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%;">
@@ -157,7 +155,7 @@
               <strong>Est stérilisé :</strong> {{ animal.EstSterilise }}<br>
               <strong>Est vacciné:</strong> {{animal.EstVaccine }}<br>
 
-              {# <strong>Prix total du devis : {{ prixTotal }} Dinars<br> #}
+              <strong>Prix total du devis : {{prix}} Dinars<br> 
     
         
            
@@ -166,10 +164,7 @@
         </div>
       </div>
     </tr>
-  {% else %} 
-    <tr>
-      <td colspan="6" class="text-center">Aucun devis trouvé.</td>
-    </tr>
-  {% endfor %}
+  
+
 </tbody>
 {% endblock %} 
