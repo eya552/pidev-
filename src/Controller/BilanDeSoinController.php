@@ -14,7 +14,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use MercurySeries\FlashyBundle\FlashyNotifier;
-
+use \Swift_Mailer;
+use PHPMailer\PHPMailer\PHPMailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -131,11 +132,36 @@ class BilanDeSoinController extends AbstractController
 
     //Admin
     #[Route('/{id}/edit', name: 'app_bilan_de_soin_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, BilanDeSoin $bilanDeSoin, BilanDeSoinRepository $bilanDeSoinRepository, FlashyNotifier $flashy): Response
+    public function edit(Request $request, BilanDeSoin $bilanDeSoin, BilanDeSoinRepository $bilanDeSoinRepository, FlashyNotifier $flashy, \Swift_Mailer $mailer): Response
     {
         $form = $this->createForm(BilanDeSoinType::class, $bilanDeSoin);
         $form->handleRequest($request);
+        // $message = (new \Swift_Message('Bilan mis a jouuur'))
+        //     ->setFrom('benkhemisseif@gmail.com')
+        //     ->setTo('waelsalem162@gmail.com')
+        //     ->setBody(
+        //         $this->renderView(
+        //             'admin/email.html.twig',
 
+        //         ),
+        //         'text/html'
+        //     );
+
+        // $mailer->send($message);
+
+        $mailer = new PHPMailer();
+        $mailer->isSMTP();
+        $mailer->Host = 'smtp.gmail.com';
+        $mailer->SMTPAuth = true;
+        $mailer->Username = 'benkhemisseif@gmail.com';
+        $mailer->Password = 'vnjwekvwzfcyrtds';
+        $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mailer->Port = 587;
+        $mailer->setFrom('benkhemisseif@gmail.com');
+        $mailer->addAddress('waelsalem162@gmail.com');
+        $mailer->Subject = 'update bilan';
+        $mailer->Body = 'mise a jour';
+        $mailer->send();
         if ($form->isSubmitted() && $form->isValid()) {
             $bilanDeSoinRepository->save($bilanDeSoin, true);
             $flashy->warning('Bilan modifié avec succés!');
