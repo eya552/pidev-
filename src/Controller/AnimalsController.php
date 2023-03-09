@@ -229,26 +229,6 @@ class AnimalsController extends AbstractController
 
     
    
-    // #[Route('/download', name: 'app_pdf')]
-
-    // public function downloadPdfAction(Pdf $snappy)
-    // {
-    //     // Generate the PDF content
-    //     $html = '<h1>Hello World</h1>';
-    
-    //     // Generate the PDF file
-    //     $pdf = $snappy->getOutputFromHtml($html);
-    
-    //     // Return the PDF file as a response
-    //     return new Response(
-    //         $pdf,
-    //         200,
-    //         array(
-    //             'Content-Type' => 'application/pdf',
-    //             'Content-Disposition' => 'attachment; filename="download.pdf"'
-    //         )
-    //     );
-    // }
 
 
 

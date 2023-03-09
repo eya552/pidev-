@@ -101,5 +101,48 @@ class AdminController extends AbstractController
     //     ]);
     
     // }
+
+    // #[Route('/stats', name: 'display_stats')]
+    // public function indexStats(AnimalsRepository $AnimalsRepository): Response
+    // {
+    //     $Animals = $AnimalsRepository->findAll();
+    //     $AnimalsColor = [];
+    //     $AnimalsGender = [];
+    //     $AnimalsCount = [];
+    //     $AnimalsGenderColor = [];
+    //     $AnimalsId = [];
+    //     $AnimalsGenderCount = [];
+
+
+    
+    //     $rand = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f');
+    //     foreach ($Animals as $Animals) {
+    //         $AnimalsGender[] = $Animals->getGenreAnimal();
+    //         $AnimalsGenderColor[] = '#' . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)];
+    //         $AnimalsGenderCount[] = count($AnimalsGender);
+    //     }
+    //     foreach ($Animals as $Animals) {
+    //         $BilansVetId[] = $BilanVet->getIdVeterinaire();
+    //         $BilansVetColor[] = '#' . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)];
+    //         $BilansVetCount[] = count($BilansVetId);
+    //     }
+
+        
+    //     }
+
+    //     return $this->render('admin/stats.html.twig', [
+    //         'controller_name' => 'AdminController',
+    //         'BilansDescription' => $BilansDescription,
+    //         'BilansCount' => $BilansCount,
+    //         'BilansColor' => $BilansColor,
+
+
+    //         'BilansVetId' => $BilansVetId,
+    //         'BilansVetCount' => $BilansVetCount,
+    //         'BilansVetColor' => $BilansVetColor,
+
+
+    //     ]);
+    // }
 }
 

@@ -4,6 +4,37 @@
 {% block title %}Résultat du calcul de devis{% endblock %}
 
 {% block body %}
+<style>
+        #google_translate_element {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #b0f2b6;
+            border: 1px solid #b0f2b6;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+        }
+
+        #google_translate_element:hover {
+            cursor: pointer;
+            opacity: 0.9;
+            background-color: #b0f2b6;
+        }
+        #google_translate_element {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+    </style>
+    <div id="google_translate_element"></div>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+    {# TRADUCTION #}
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <div style="margin-right:50px;margin-left:350px">
     <h1>Résultat de la simulation de devis</h1>
 
@@ -17,8 +48,9 @@
 
     <p>Prix total du devis : {{ prixTotal }} Dinars</p>
     
-    <div style=" margin-bottom: 10px;">                     
-    <a href="{{ path('users_data_download') }}" class="btn btn-primary ">Generer PDF</a>      
+    <div style=" margin-bottom: 10px;">
+                           
+ <a href="{{ path('users_data_download') }}" class="btn btn-primary ">Generer PDF</a>                     
     </div> 
 </div>
 {% endblock %}
