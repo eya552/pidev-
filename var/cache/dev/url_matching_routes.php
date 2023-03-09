@@ -12,6 +12,7 @@ return [
         '/account/reset' => [[['_route' => 'passwordReset', '_controller' => 'App\\Controller\\AccountController::editAction'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/admin' => [[['_route' => 'admin_dasboard', '_controller' => 'App\\Controller\\AdminController::index'], null, null, null, true, false, null]],
         '/admin/afficheAll' => [[['_route' => 'afficheall', '_controller' => 'App\\Controller\\AdminController::affichier'], null, null, null, false, false, null]],
+        '/admin/pdf/espace/download' => [[['_route' => 'user_pdf', '_controller' => 'App\\Controller\\AdminController::packPdf'], null, null, null, false, false, null]],
         '/banned' => [[['_route' => 'banned', '_controller' => 'App\\Controller\\BannedController::index'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'app_landing_page', '_controller' => 'App\\Controller\\LandingPageController::index'], null, null, null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],

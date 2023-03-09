@@ -62,6 +62,12 @@ return [[
 '[C]Symfony%5CBundle%5CFrameworkBundle%5CController%5CAbstractController%23addLink' => 1,
 'Symfony%5CBundle%5CFrameworkBundle%5CController%5CAbstractController%24container' => 0,
 '[C]Symfony%5CBundle%5CFrameworkBundle%5CController%5CAbstractController%24container' => 1,
+'App%5CController%5CAccountController' => 0,
+'[C]App%5CController%5CAccountController' => 1,
+'App%5CController%5CAccountController%23index' => 0,
+'[C]App%5CController%5CAccountController%23index' => 1,
+'App%5CController%5CAccountController%23editAction' => 0,
+'[C]App%5CController%5CAccountController%23editAction' => 1,
 'App%5CController%5CAdminController' => 0,
 '[C]App%5CController%5CAdminController' => 1,
 'App%5CController%5CAdminController%23index' => 0,
@@ -74,6 +80,12 @@ return [[
 '[C]App%5CController%5CAdminController%23desactiverUser' => 1,
 'App%5CController%5CAdminController%23sendEmail' => 0,
 '[C]App%5CController%5CAdminController%23sendEmail' => 1,
+'App%5CController%5CAdminController%23packPdf' => 2,
+'[C]App%5CController%5CAdminController%23packPdf' => 1,
+'App%5CController%5CBannedController' => 0,
+'[C]App%5CController%5CBannedController' => 1,
+'App%5CController%5CBannedController%23index' => 0,
+'[C]App%5CController%5CBannedController%23index' => 1,
 'App%5CController%5CLandingPageController' => 0,
 '[C]App%5CController%5CLandingPageController' => 1,
 'App%5CController%5CLandingPageController%23index' => 0,
@@ -86,6 +98,10 @@ return [[
 '[C]App%5CController%5CRegistrationController%23register' => 1,
 'App%5CController%5CRegistrationController%23verifyUserEmail' => 0,
 '[C]App%5CController%5CRegistrationController%23verifyUserEmail' => 1,
+'App%5CController%5CRegistrationController%23registerVetrrinaire' => 0,
+'[C]App%5CController%5CRegistrationController%23registerVetrrinaire' => 1,
+'App%5CController%5CRegistrationController%23registeremp' => 0,
+'[C]App%5CController%5CRegistrationController%23registeremp' => 1,
 'App%5CController%5CRegistrationController%24emailVerifier' => 0,
 '[C]App%5CController%5CRegistrationController%24emailVerifier' => 1,
 'App%5CController%5CResetPasswordController' => 0,
@@ -148,13 +164,13 @@ return [[
 '[C]App%5CEntity%5CResetPasswordRequest%24id' => 1,
 'App%5CEntity%5CResetPasswordRequest%24user' => 0,
 '[C]App%5CEntity%5CResetPasswordRequest%24user' => 1,
-'App%5CEntity%5CResetPasswordRequest%24selector' => 2,
+'App%5CEntity%5CResetPasswordRequest%24selector' => 3,
 '[C]App%5CEntity%5CResetPasswordRequest%24selector' => 1,
-'App%5CEntity%5CResetPasswordRequest%24hashedToken' => 3,
+'App%5CEntity%5CResetPasswordRequest%24hashedToken' => 4,
 '[C]App%5CEntity%5CResetPasswordRequest%24hashedToken' => 1,
-'App%5CEntity%5CResetPasswordRequest%24requestedAt' => 4,
+'App%5CEntity%5CResetPasswordRequest%24requestedAt' => 5,
 '[C]App%5CEntity%5CResetPasswordRequest%24requestedAt' => 1,
-'App%5CEntity%5CResetPasswordRequest%24expiresAt' => 4,
+'App%5CEntity%5CResetPasswordRequest%24expiresAt' => 5,
 '[C]App%5CEntity%5CResetPasswordRequest%24expiresAt' => 1,
 'App%5CEntity%5CUser' => 0,
 '[C]App%5CEntity%5CUser' => 1,
@@ -208,6 +224,8 @@ return [[
 '[C]App%5CEntity%5CUser%23isVerified' => 1,
 'App%5CEntity%5CUser%23setIsVerified' => 0,
 '[C]App%5CEntity%5CUser%23setIsVerified' => 1,
+'App%5CEntity%5CUser%23__toString' => 0,
+'[C]App%5CEntity%5CUser%23__toString' => 1,
 'App%5CEntity%5CUser%24id' => 0,
 '[C]App%5CEntity%5CUser%24id' => 1,
 'App%5CEntity%5CUser%24email' => 0,
@@ -794,8 +812,30 @@ return [[
 ], [
 
 0 => [],
-1 => 1678239142,
+1 => 1678404553,
 2 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
+                    '/pdf/espace/download',
+                ],
+                'name' => [
+                    'user_pdf',
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+3 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -823,7 +863,7 @@ return [[
         []
     );
 },
-3 => static function () {
+4 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -851,7 +891,7 @@ return [[
         []
     );
 },
-4 => static function () {
+5 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),

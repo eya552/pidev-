@@ -1,0 +1,43 @@
+<div style="margin : 30px">
+	<div style="text-align:center">
+		<h2>
+			user PDF</h2>
+	</div>
+
+	<table border="1px">
+		<thead>
+			<tr>
+				<th>email</th>
+                <th>prenom</th>
+                <th>nom</th>
+                <th>tel</th>
+                <th>adress</th>
+				<th>QrCode</th>
+
+			</tr>
+		</thead>
+		<tbody>
+            {% for user in user %}
+									<tr>
+										 
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.prenom }}</td>
+                                        <td>{{ user.nom }}</td>
+                                        <td>{{ user.tel }}</td>
+                                        <td>{{ user.adress }}</td>
+										
+										<td >
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data= {{user.id}},nom d utilisateur :{{user.nom}},prenom d utilisateur:{{user.prenom}},numero tel  :{{ user.tel}},email d utilisateur :{{user.email}},adresse d utilisateur:{{user.adress}}&amp;size=250x250" alt="" title=":" style="atsc-nav-index:1000px"/>  
+          </td>
+
+
+									
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="7">no records found</td>
+									</tr>
+								{% endfor %}
+		</tbody>
+	</table>
+</div>

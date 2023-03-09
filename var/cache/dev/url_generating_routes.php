@@ -10,6 +10,7 @@ return [
     'activerUser' => [['id'], ['_controller' => 'App\\Controller\\AdminController::activerUser'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/activer']], [], [], []],
     'desactiverUser' => [['id'], ['_controller' => 'App\\Controller\\AdminController::desactiverUser'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/desactiver']], [], [], []],
     'sendMailToUser' => [['email_use'], ['_controller' => 'App\\Controller\\AdminController::sendEmail'], [], [['variable', '/', '[^/]++', 'email_use', true], ['text', '/admin/email']], [], [], []],
+    'user_pdf' => [[], ['_controller' => 'App\\Controller\\AdminController::packPdf'], [], [['text', '/admin/pdf/espace/download']], [], [], []],
     'banned' => [[], ['_controller' => 'App\\Controller\\BannedController::index'], [], [['text', '/banned']], [], [], []],
     'app_landing_page' => [[], ['_controller' => 'App\\Controller\\LandingPageController::index'], [], [['text', '/']], [], [], []],
     'app_register' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], [], []],
