@@ -17,9 +17,8 @@
 
     <p>Prix total du devis : {{ prixTotal }} Dinars</p>
     
-    <div style=" margin-bottom: 10px;">
-                           
-                            <a href="{{ path('app_pdf') }}" class=" btn btn-warning">PDF</a>
-                        </div> 
+    <div style=" margin-bottom: 10px;">                     
+    <a href="{{ path('users_data_download') }}" class="btn btn-primary ">Generer PDF</a>      
+    </div> 
 </div>
 {% endblock %}

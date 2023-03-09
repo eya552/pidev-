@@ -12,6 +12,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
+use Knp\Snappy\Pdf;
+use Mpdf\Mpdf;
+
+
 
 #[Route('/animals')]
 class AnimalsController extends AbstractController
@@ -178,19 +182,22 @@ class AnimalsController extends AbstractController
 
     }
 
-    
-   
-    #[Route('/download', name: 'app_pdf')]
-    public function usersDataDownload()
+    #[Route('/data/download', name: 'users_data_download')]
+
+    public function usersDataDownload(AnimalsRepository $animal)
     {
         // On définit les options du PDF
         $pdfOptions = new Options();
         // Police par défaut
         $pdfOptions->set('defaultFont', 'Arial');
         $pdfOptions->setIsRemoteEnabled(true);
-
+    
         // On instancie Dompdf
         $dompdf = new Dompdf($pdfOptions);
+        $animal= $animal->findAll();
+       
+        // $classrooms= $this->getDoctrine()->getRepository(classroomRepository::class)->findAll();
+    
         $context = stream_context_create([
             'ssl' => [
                 'verify_peer' => FALSE,
@@ -199,24 +206,49 @@ class AnimalsController extends AbstractController
             ]
         ]);
         $dompdf->setHttpContext($context);
-
+    
         // On génère le html
-        $html = $this->renderView('animals/resultat.html.twig');
-
+        $html =$this->renderView('animals/listp.html.twig',[
+            'animals'=>$animal
+        ]);
+    
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
-
-        
-
+    
+        // On génère un nom de fichier
+        $fichier = 'Liste-animal' .'.pdf';
+    
         // On envoie le PDF au navigateur
         $dompdf->stream($fichier, [
             'Attachment' => true
         ]);
-
-        return new Response();
+    
+        return new Response() ;
     }
 
+    
+   
+    // #[Route('/download', name: 'app_pdf')]
+
+    // public function downloadPdfAction(Pdf $snappy)
+    // {
+    //     // Generate the PDF content
+    //     $html = '<h1>Hello World</h1>';
+    
+    //     // Generate the PDF file
+    //     $pdf = $snappy->getOutputFromHtml($html);
+    
+    //     // Return the PDF file as a response
+    //     return new Response(
+    //         $pdf,
+    //         200,
+    //         array(
+    //             'Content-Type' => 'application/pdf',
+    //             'Content-Disposition' => 'attachment; filename="download.pdf"'
+    //         )
+    //     );
+    // }
 
 
 
@@ -225,4 +257,4 @@ class AnimalsController extends AbstractController
 
 
 
-}
+ } 
