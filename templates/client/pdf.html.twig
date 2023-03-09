@@ -1,36 +1,33 @@
 {% extends "./pdf/Base.pdf.html.twig" %}
+
+
 {% block body %}
 	<div class='col-md-12'>
 		<div class='col-md-3'>
-			<img id="logo" src="{{asset('assets/client/img/logos/Vet_Assur__2_-removebg-preview.png')}}" alt="logo"/>
+			<img id="logo" src="{{asset('assets/client/img/logos/Vet_Assur__2_-removebg-preview.png')}}" class="logo" style="width:200px;  "/>
+
 		</div>
 		<div class='col-md-6'></div>
-
-
 	</div>
 	<div class='col-md-12'>
 		<div class='col-md-3'></div>
 		<div class='col-md-6'>
-			<h1>Details de bilan n°{{ bilan_de_soin.id }}
+			<h1 class="text-danger">Details de bilan n°{{ bilan_de_soin.id }}
 			</h1>
 			<br>
 			<br>
-			<p>Animal:
+			<p class="text-danger">Animal:
+
 				{{ bilan_de_soin.Animal }}</p><br>
 
-			<p>Prix:
+			<p class="text-danger">Prix:
+
 				{{ bilan_de_soin.Prix }}TND</p><br>
 
 
-			<p>Description:
-				{{ bilan_de_soin.Description }}</p><br>
+			<p class="text-danger">Description:
 
-
-		</div>
-
+				{{ bilan_de_soin.Description }}</p><br></div>
 		<div class='col-md-3'></div>
-
 	</div>
-
-
 {% endblock %}

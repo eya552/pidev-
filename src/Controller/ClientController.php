@@ -126,6 +126,10 @@ class ClientController extends AbstractController
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Arial');
         $pdfOptions->setIsRemoteEnabled(true);
+        $pdfOptions->set('isHtml5ParserEnabled', true);
+        $pdfOptions->set('isFontSubsettingEnabled', true);
+        $pdfOptions->set('isPhpEnabled', true);
+        $pdfOptions->set('debugKeepTemp', true);
         $dompdf = new Dompdf($pdfOptions);
         $context = stream_context_create([
             'ssl' => [
@@ -139,7 +143,7 @@ class ClientController extends AbstractController
             'bilan_de_soin' => $bilanDeSoin,
         ]);
         $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'Portrait');
+        $dompdf->setPaper('A5', 'Portrait');
         $dompdf->render();
         $fichier = 'Bilan de soin' . '.pdf';
         $dompdf->stream($fichier, [
