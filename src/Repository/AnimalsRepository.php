@@ -52,7 +52,26 @@ class AnimalsRepository extends ServiceEntityRepository
         ->select('COUNT(e)');
         return $query->getQuery()->getSingleScalarResult();
     }
+    public function searchAnimals($query)
+    {
+        $qb = $this->createQueryBuilder('e');
+        $qb->where($qb->expr()->orX(
+            $qb->expr()->like('e.NomAnimal', ':query'),
+            $qb->expr()->like('e.GenreAnimal', ':query')
+        ));
+        $qb->setParameter('query', '%'.$query.'%');
 
+        return $qb->getQuery()->getResult();
+    }
+
+    public function TrieparDate(): array
+    {
+        return $this->createQueryBuilder('e')
+            ->orderBy('e.DateDeNaissance', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 //    /**
 //     * @return Animals[] Returns an array of Animals objects
 //     */

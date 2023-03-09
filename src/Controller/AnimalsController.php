@@ -21,12 +21,39 @@ use Mpdf\Mpdf;
 class AnimalsController extends AbstractController
 {
     #[Route('/', name: 'app_animals_index', methods: ['GET'])]
-    public function index(AnimalsRepository $animalsRepository): Response
+    public function index(Request $request,AnimalsRepository $animalsRepository): Response
     {
+        $query = $request->query->get('q');
         return $this->render('animals/index.html.twig', [
             'animals' => $animalsRepository->findAll(),
+            'query' => $query,
         ]);
     }
+    #[Route('/search', name: 'event_search')]
+    public function search(Request $request,AnimalsRepository $rep): Response
+    {
+        $query = $request->query->get('q');
+        $events = $rep->searchAnimals($query);
+
+        return $this->render('animals/search.html.twig', [
+            'animals' => $events,
+            'query' => $query,
+        ]);
+    }
+
+    #[Route('/trie', name: 'trie')]
+    public function trie(AnimalsRepository $repositoryE, Request $request)
+    {
+        $event = $repositoryE->findAll();
+        $event=$repositoryE->TrieparDate(); 
+        $query = $request->query->get('q');                                       
+       
+    
+        return $this->render("animals/index.html.twig",array("animals"=>$event,
+        'query' => $query,));
+    }
+
+   
 
     #[Route('/new', name: 'app_animals_new', methods: ['GET', 'POST'])]
     public function new(Request $request, AnimalsRepository $animalsRepository): Response
@@ -226,6 +253,11 @@ class AnimalsController extends AbstractController
     
         return new Response() ;
     }
+
+  
+
+
+   
 
     
    

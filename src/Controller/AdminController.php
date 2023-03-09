@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\AnimalsRepository;
 use App\Entity\Animals;
+use Symfony\Component\HttpFoundation\Request;
 
 
 
@@ -154,6 +155,10 @@ class AdminController extends AbstractController
             'AnimalsEstVaccineColor' => $AnimalsEstVaccineColor,
         ]);
     }
+
+
+   
+
     
 }
 
