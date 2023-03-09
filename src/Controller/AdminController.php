@@ -13,33 +13,7 @@ use App\Repository\ReclamationRepository;
 class AdminController extends AbstractController
 {
 
-    // #[Route('/homeAdmin', name: 'display_home')]
-    // public function indexhome(): Response
-    // {
-    //     return $this->render('admin/home.html.twig', [
-    //         'controller_name' => 'AdminController',
-    //     ]);
-    // }
-    // #[Route('/statsClient', name: 'app_bilan_de_soin_statsClient')]
-    // public function StatsClient(BilanDeSoinRepository $bilanDeSoinRepository): Response
-    // {
-    //     $Bilans = $bilanDeSoinRepository->findAll();
-    //     // $BilansClient=[];
-    //     $BilansColor = [];
-    //     $BilansDescription = [];
-    //     $BilansCount = [];
-    //     $rand = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f');
-    //     foreach ($Bilans as $Bilan) {
-    //         $BilansDescription[] = $Bilan->getDescription();
-    //         $BilansColor[] = '#' . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)];
-    //         $BilansCount[] = count($BilansDescription);
-    //     }
-    //     return $this->render('admin/home.html.twig', [
-    //         'BilansDescription' => $BilansDescription,
-    //         'BilansCount' => $BilansCount,
-    //         'BilansColor' => $BilansColor,
-    //     ]);
-    // }
+
     #[Route('/homeAdmin', name: 'display_home')]
     public function indexhome(BilanDeSoinRepository $bilanDeSoinRepository, ReclamationRepository $reclamationRepository): Response
     {
@@ -120,33 +94,7 @@ class AdminController extends AbstractController
 
 
 
-    // #[Route('/tables', name: 'display_tables')]
-    // public function indextables(): Response
-    // {
-    //     return $this->render('admin/tables.html.twig' , [
-    //         'controller_name' => 'AdminController',
-    //     ]);
-    // }
 
-
-
-    // #[Route('/billing.', name: 'display_billing')]
-    // public function indexbilling(): Response
-    // {
-    //     return $this->render('admin/billing.html.twig' , [
-    //         'controller_name' => 'AdminController',
-    //     ]);
-    // }
-
-
-
-    // #[Route('/notifications', name: 'display_notifications')]
-    // public function indexnotifications(): Response
-    // {
-    //     return $this->render('admin/notifications.html.twig' , [
-    //         'controller_name' => 'AdminController',
-    //     ]);
-    // }
 
 
 

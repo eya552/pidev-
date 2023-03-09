@@ -23,17 +23,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/bilan/de/soin')]
 class BilanDeSoinController extends AbstractController
 {
-    // #[Route('/Bilans', name: 'app_bilan_de_soin_index', methods: ['GET'])]
-    // public function list(Request $request,BilanDeSoinRepository $repository,PaginatorInterface $paginator): Response
-    // {
-    //     $bilans = $repository->findAll();
 
-    //     $pagination = $paginator->paginate(
-    //         $bilans, $request->query->getInt('page', 1),1); // Numéro de page par défaut
-    //     return $this->render('admin/Bilans.html.twig', [
-    //         'pagination' => $pagination,
-    //     ]);
-    // }
 
 
 
