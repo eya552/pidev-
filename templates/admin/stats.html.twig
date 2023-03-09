@@ -11,29 +11,29 @@
 
 				<div class="card">
 					<div class="card-body">
-						<h1 class="card-title">Statistiques des bilans par description</h1>
+						<h1 class="card-title">Statistiques des animaux par Genre</h1>
 
 						{% block content %}
-							{% if BilansDescription is empty %}
+							{% if AnimalsGenreAnimal is empty %}
 								<p>Aucune donnée disponible.</p>
 							{% else %}
-								<canvas id="pieChart" style="max-height: 400px; display: block; box-sizing: border-box; height: 400px; width: 840.8px;" width="1051"></canvas>
+								<canvas id="pieChart" style="display: block; box-sizing: border-box; height: 400px; width: 840.8px;" width="1051"></canvas>
 							{% endif %}
 						{% endblock %}
 
 						{% block javascript %}
-							{% if BilansDescription is not empty %}
+							{% if AnimalsGenreAnimal is not empty %}
 								<script>
 									document.addEventListener("DOMContentLoaded", () => {
 new Chart(document.querySelector('#pieChart'), {
 type: 'pie',
 data: {
-labels: {{ BilansDescription|json_encode|raw }},
+labels: {{ AnimalsGenreAnimal|json_encode|raw }},
 datasets: [
 {
-label: 'My First Dataset',
-data: {{ BilansCount|json_encode|raw }},
-backgroundColor: {{ BilansColor|json_encode|raw }},
+label: 'Genre Animal',
+data: {{ AnimalsGenreAnimalCount|json_encode|raw }},
+backgroundColor: {{ AnimalsGenreAnimalColor|json_encode|raw }},
 hoverOffset: 4
 }
 ]
@@ -51,11 +51,11 @@ hoverOffset: 4
 
 				<div class="card">
 					<div class="card-body">
-						<h1 class="card-title">Statistiques des bilans par veterinaire
+						<h1 class="card-title">Statistiques des animaux en fonction de sterilisation
 						</h1>
 
 						{% block content2 %}
-							{% if BilansVetId is empty %}
+							{% if AnimalsEstSterilise is empty %}
 
 								<p>Aucune donnée disponible.</p>
 							{% else %}
@@ -64,7 +64,7 @@ hoverOffset: 4
 						{% endblock %}
 
 						{% block javascript2 %}
-							{% if BilansVetId is not empty %}
+							{% if AnimalsEstSterilise is not empty %}
 
 								<script>
 									document.addEventListener("DOMContentLoaded", () => {
@@ -72,14 +72,14 @@ new Chart(document.querySelector('#barChart'), {
 type: 'bar',
 
 data: {
-labels: {{ BilansVetId|json_encode|raw }},
+labels: {{ AnimalsEstSterilise|json_encode|raw }},
 
 datasets: [
 {
-label: 'My First Dataset',
-data: {{ BilansVetCount|json_encode|raw }},
+label: 'Etat Sterilisation',
+data: {{ AnimalsEstSteriliseCount|json_encode|raw }},
 
-backgroundColor: {{ BilansVetColor|json_encode|raw }},
+backgroundColor: {{ AnimalsEstSteriliseColor|json_encode|raw }},
 
 options: {
 scales: {
@@ -101,7 +101,7 @@ beginAtZero: true
 				</div>
 			</div>
 
-			<div class="col-lg-6">
+			{# <div class="col-lg-6">
 
 				<div class="card">
 					<div class="card-body">
@@ -143,10 +143,10 @@ hoverOffset: 4
 								</script>
 							{% endif %}
 						{% endblock %}
-					</div>
+					</div> #}
 
-				</div>
-			</div>
+				{# </div>
+			</div> #}
 		</div>
 	</main>
 {% endblock %}

@@ -5,6 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\AnimalsRepository;
+use App\Entity\Animals;
+
 
 
 #[Route('/Admin')]
@@ -102,47 +105,42 @@ class AdminController extends AbstractController
     
     // }
 
-    // #[Route('/stats', name: 'display_stats')]
-    // public function indexStats(AnimalsRepository $AnimalsRepository): Response
-    // {
-    //     $Animals = $AnimalsRepository->findAll();
-    //     $AnimalsColor = [];
-    //     $AnimalsGender = [];
-    //     $AnimalsCount = [];
-    //     $AnimalsGenderColor = [];
-    //     $AnimalsId = [];
-    //     $AnimalsGenderCount = [];
-
-
+    #[Route('/stats', name: 'display_stats')]
+    public function indexStats(AnimalsRepository $AnimalsRepository): Response
+    {
+        $Animals = $AnimalsRepository->findAll();
+        $AnimalsGenreAnimalColor = [];
+        $AnimalsGenreAnimal = [];
+        $AnimalsGenreAnimalCount = [];
+        $AnimalsEstSteriliseColor = [];
+        $AnimalsEstSterilise = [];
+        $AnimalsEstSteriliseCount = [];
     
-    //     $rand = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f');
-    //     foreach ($Animals as $Animals) {
-    //         $AnimalsGender[] = $Animals->getGenreAnimal();
-    //         $AnimalsGenderColor[] = '#' . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)];
-    //         $AnimalsGenderCount[] = count($AnimalsGender);
-    //     }
-    //     foreach ($Animals as $Animals) {
-    //         $BilansVetId[] = $BilanVet->getIdVeterinaire();
-    //         $BilansVetColor[] = '#' . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)];
-    //         $BilansVetCount[] = count($BilansVetId);
-    //     }
-
-        
-    //     }
-
-    //     return $this->render('admin/stats.html.twig', [
-    //         'controller_name' => 'AdminController',
-    //         'BilansDescription' => $BilansDescription,
-    //         'BilansCount' => $BilansCount,
-    //         'BilansColor' => $BilansColor,
-
-
-    //         'BilansVetId' => $BilansVetId,
-    //         'BilansVetCount' => $BilansVetCount,
-    //         'BilansVetColor' => $BilansVetColor,
-
-
-    //     ]);
-    // }
+        $rand = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f');
+        foreach ($Animals as $Animal) {
+            $genreAnimal = $Animal->getGenreAnimal();
+            $AnimalsGenreAnimal[] = $genreAnimal;
+            $AnimalsGenreAnimalColor[] = '#' . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)];
+        }
+        $AnimalsGenreAnimalCount = array_count_values($AnimalsGenreAnimal);
+    
+        foreach ($Animals as $Animal) {
+            $estSterilise = $Animal->getEstSterilise();
+            $AnimalsEstSterilise[] = $estSterilise;
+            $AnimalsEstSteriliseColor[] = '#' . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)];
+        }
+        $AnimalsEstSteriliseCount = array_count_values($AnimalsEstSterilise);
+    
+        return $this->render('admin/stats.html.twig', [
+            'controller_name' => 'AdminController',
+            'AnimalsGenreAnimal' => $AnimalsGenreAnimal,
+            'AnimalsGenreAnimalCount' => $AnimalsGenreAnimalCount,
+            'AnimalsGenreAnimalColor' => $AnimalsGenreAnimalColor,
+            'AnimalsEstSterilise' => $AnimalsEstSterilise,
+            'AnimalsEstSteriliseCount' => $AnimalsEstSteriliseCount,
+            'AnimalsEstSteriliseColor' => $AnimalsEstSteriliseColor,
+        ]);
+    }
+    
 }
 
