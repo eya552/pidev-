@@ -115,6 +115,9 @@ class AdminController extends AbstractController
         $AnimalsEstSteriliseColor = [];
         $AnimalsEstSterilise = [];
         $AnimalsEstSteriliseCount = [];
+        $AnimalsEstVaccineColor = [];
+        $AnimalsEstVaccine = [];
+        $AnimalsEstVaccineCount = [];
     
         $rand = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f');
         foreach ($Animals as $Animal) {
@@ -130,6 +133,13 @@ class AdminController extends AbstractController
             $AnimalsEstSteriliseColor[] = '#' . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)];
         }
         $AnimalsEstSteriliseCount = array_count_values($AnimalsEstSterilise);
+
+        foreach ($Animals as $Animal) {
+            $EstVaccine = $Animal->getEstVaccine();
+            $AnimalsEstVaccine[] = $EstVaccine;
+            $AnimalsEstVaccineColor[] = '#' . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)];
+        }
+        $AnimalsEstVaccineCount = array_count_values($AnimalsEstVaccine);
     
         return $this->render('admin/stats.html.twig', [
             'controller_name' => 'AdminController',
@@ -139,6 +149,9 @@ class AdminController extends AbstractController
             'AnimalsEstSterilise' => $AnimalsEstSterilise,
             'AnimalsEstSteriliseCount' => $AnimalsEstSteriliseCount,
             'AnimalsEstSteriliseColor' => $AnimalsEstSteriliseColor,
+            'AnimalsEstVaccine' => $AnimalsEstVaccine,
+            'AnimalsEstVaccineCount' => $AnimalsEstVaccineCount,
+            'AnimalsEstVaccineColor' => $AnimalsEstVaccineColor,
         ]);
     }
     

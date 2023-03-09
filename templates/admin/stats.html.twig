@@ -8,7 +8,7 @@
 	<main id="main" class="main">
 		<div class="row">
 			<div class="col-lg-6">
-
+{# 
 				<div class="card">
 					<div class="card-body">
 						<h1 class="card-title">Statistiques des animaux par Genre</h1>
@@ -17,11 +17,12 @@
 							{% if AnimalsGenreAnimal is empty %}
 								<p>Aucune donnée disponible.</p>
 							{% else %}
-								<canvas id="pieChart" style="display: block; box-sizing: border-box; height: 400px; width: 840.8px;" width="1051"></canvas>
+								<canvas id="pieChart" style="max-height: 400px; display: block; box-sizing: border-box; height: 400px; width: 840.8px;" width="1051"></canvas>
 							{% endif %}
 						{% endblock %}
 
 						{% block javascript %}
+                        <script src="{{ asset('assets/Admin/vendor/chart.js/chart.min.js') }}"></script>
 							{% if AnimalsGenreAnimal is not empty %}
 								<script>
 									document.addEventListener("DOMContentLoaded", () => {
@@ -46,7 +47,7 @@ hoverOffset: 4
 					</div>
 
 				</div>
-			</div>
+			</div> #}
 			<div class="col-lg-6">
 
 				<div class="card">
@@ -54,7 +55,7 @@ hoverOffset: 4
 						<h1 class="card-title">Statistiques des animaux en fonction de sterilisation
 						</h1>
 
-						{% block content2 %}
+						{% block content %}
 							{% if AnimalsEstSterilise is empty %}
 
 								<p>Aucune donnée disponible.</p>
@@ -63,7 +64,8 @@ hoverOffset: 4
 							{% endif %}
 						{% endblock %}
 
-						{% block javascript2 %}
+						{% block javascript %}
+                        <script src="{{ asset('assets/Admin/vendor/chart.js/chart.min.js') }}"></script>
 							{% if AnimalsEstSterilise is not empty %}
 
 								<script>
@@ -100,6 +102,125 @@ beginAtZero: true
 
 				</div>
 			</div>
+
+
+
+
+
+            <div class="card">
+					<div class="card-body">
+						<h1 class="card-title">Statistiques des animaux en fonction de vaccination
+						</h1>
+
+						{% block content2 %}
+							{% if AnimalsEstVaccine is empty %}
+
+								<p>Aucune donnée disponible.</p>
+							{% else %}
+								<canvas id="barChart1" style="max-height: 400px; display: block; box-sizing: border-box; height: 400px; width: 840.8px;" width="1051"></canvas>
+							{% endif %}
+						{% endblock %}
+
+						{% block javascript2 %}
+                       
+							{% if AnimalsEstVaccine is not empty %}
+
+								<script>
+									document.addEventListener("DOMContentLoaded", () => {
+new Chart(document.querySelector('#barChart1'), {
+type: 'bar',
+
+data: {
+labels: {{ AnimalsEstVaccine|json_encode|raw }},
+
+datasets: [
+{
+label: 'Etat vaccination',
+data: {{ AnimalsEstVaccineCount|json_encode|raw }},
+
+backgroundColor: {{ AnimalsEstVaccineColor|json_encode|raw }},
+
+options: {
+scales: {
+y: {
+beginAtZero: true
+}
+}
+}
+}
+]
+}
+});
+});
+								</script>
+							{% endif %}
+						{% endblock %}
+					</div>
+
+				</div>
+			</div>
+
+
+
+
+            
+            <div class="card">
+					<div class="card-body">
+						<h1 class="card-title">Statistiques des animaux en fonction de vaccination
+						</h1>
+
+						{% block content3 %}
+							{% if AnimalsGenreAnimal is empty %}
+
+								<p>Aucune donnée disponible.</p>
+							{% else %}
+								<canvas id="barChart2" style="max-height: 400px; display: block; box-sizing: border-box; height: 400px; width: 840.8px;" width="1051"></canvas>
+							{% endif %}
+						{% endblock %}
+
+						{% block javascript3 %}
+                       
+							{% if AnimalsGenreAnimal is not empty %}
+
+								<script>
+									document.addEventListener("DOMContentLoaded", () => {
+new Chart(document.querySelector('#barChart2'), {
+type: 'bar',
+
+data: {
+labels: {{ AnimalsGenreAnimal|json_encode|raw }},
+
+datasets: [
+{
+label: 'Etat vaccination',
+data: {{ AnimalsGenreAnimalCount|json_encode|raw }},
+
+backgroundColor: {{ AnimalsGenreAnimalColor|json_encode|raw }},
+
+options: {
+scales: {
+y: {
+beginAtZero: true
+}
+}
+}
+}
+]
+}
+});
+});
+								</script>
+							{% endif %}
+						{% endblock %}
+					</div>
+
+				</div>
+			</div>
+
+
+
+
+
 
 			{# <div class="col-lg-6">
 
