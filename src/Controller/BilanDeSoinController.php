@@ -55,7 +55,7 @@ class BilanDeSoinController extends AbstractController
         $pagination = $paginator->paginate(
             $bilans ?: $repository->findAll(),
             $request->query->getInt('page', 1),
-            2 // Nombre d'éléments par page
+            8 // Nombre d'éléments par page
         );
 
         return $this->render(
@@ -78,7 +78,7 @@ class BilanDeSoinController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $bilanDeSoinRepository->save($bilanDeSoin, true);
-            $flashy->success('Bilan creé avec succés!', 'http://your-awesome-link.com');
+            $flashy->success('Bilan creé avec succés!');
             return $this->redirectToRoute('app_bilan_de_soin_index', [], Response::HTTP_SEE_OTHER);
         }
 

@@ -61,7 +61,7 @@ class ReclamationController extends AbstractController
         $pagination = $paginator->paginate(
             $reclamations ?: $repository->findAll(),
             $request->query->getInt('page', 1),
-            2 // Nombre d'éléments par page
+            8 // Nombre d'éléments par page
         );
 
         return $this->render(
@@ -76,44 +76,7 @@ class ReclamationController extends AbstractController
 
 
 
-    // #[Route('/reclamations', name: 'app_reclamations_index', methods: ['GET'])]
-    // public function list(Request $request, ReclamationRepository $repos, PaginatorInterface $paginator): Response
-    // {
-    //     $form = $this->createFormBuilder()
-    //         ->add('search', SearchType::class, [
-    //             'label' => false,
-    //             'required' => false,
-    //             'attr' => [
-    //                 'placeholder' => 'Rechercher...',
-    //                 'class' => 'form-control mr-sm-2',
-    //                 'aria-label' => 'Recherche',
-    //             ],
-    //         ])
-    //         ->getForm();
-
-    //     $form->handleRequest($request);
-    //     $searchTerm = null;
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         $searchTerm = $form->getData()['search'];
-    //     }
-
-    //     if ($searchTerm !== null) {
-    //         $Reclamations = $repos->findBySearchTerm($searchTerm);
-    //     } else {
-    //         $Reclamations = $repos->findAll();
-    //     }
-
-    //     $pagination = $paginator->paginate(
-    //         $Reclamations,
-    //         $request->query->getInt('page', 1),
-    //         2 // Nombre d'éléments par page
-    //     );
-
-    //     return $this->render('admin/Reclamations.html.twig', [
-    //         'pagination' => $pagination,
-    //         'form' => $form->createView(),
-    //     ]);
-    // }
+  
 
 
 

@@ -19,8 +19,23 @@
 							</div>
 							<div class=" tablesearch">
 								<form method="get" class="form-inline my-2 my-lg-0">
-									{{ form_widget(form.search) }}
+									<input type="search" id="myInput" class="form-control pl-6" placeholder="Search division"/>
+
 									<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+									{% block javascript %}
+										<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+										<script>
+											$(document).ready(function () {
+$("#myInput").on("keyup", function () {
+var value = $(this).val().toLowerCase();
+$("#myTable tr").filter(function () {
+$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+});
+})
+});
+										</script>
+
+									{% endblock %}
 								</form>
 
 							</div>
@@ -29,7 +44,8 @@
 							<div class="table-responsive p-0">
 
 
-								<table class="table align-items-center mb-0">
+								<table class="table align-items-center mb-0" id="myTable">
+
 									<thead>
 										<tr>
 											<th class="text-uppercase text-secondary text-xxs  opacity-7">Id_Bilan</th>
@@ -108,4 +124,3 @@
 	</main>
 
 {% endblock %}
-
