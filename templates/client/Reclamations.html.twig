@@ -1,18 +1,18 @@
 {% extends 'client/base.html.twig' %}
 
-{% block title %}Listes des bilans de soin
+{% block title %}Listes des Reclamations de soin
 {% endblock %}
 
 {% block body %}
 
 	<!-- PAGE TITLE
-	        ================================================== -->
+		        ================================================== -->
 	<section class="page-title-section bg-img cover-background left-overlay-dark" data-overlay-dark="8" data-background="img/banner/page-title.jpg">
 		<div class="container">
 			<div class="page-title mx-1-6 mx-lg-2-0 mx-xl-2-6 mx-xxl-2-9">
 				<div class="row">
 					<div class="col-md-12">
-						<h1>Mes bilans</h1>
+						<h1>Mes Reclamations</h1>
 					</div>
 					<div class="col-md-12">
 						<ul class="ps-0">
@@ -23,7 +23,7 @@
 								<a href="#!">Espace client</a>
 							</li>
 							<li>
-								<a href="#!">Mes bilans</a>
+								<a href="#!">Mes Reclamations</a>
 							</li>
 						</ul>
 					</div>
@@ -37,28 +37,28 @@
 
 
 	<!-- BLOG LIST
-	        ================================================== -->
+		        ================================================== -->
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mb-5 mb-lg-0 mt-n2-2">
-					{% if bilans %}
-						{% for bilan in bilans %}
+					{% if Reclamations %}
+						{% for Reclamation in Reclamations %}
 							<article class="card card-style10 border-0 h-auto image-hover wow fadeInUp mt-2-2" data-wow-delay="100ms">
 
 								<div class="card-body p-1-9 pt-2-3">
 									<ul class="card-list ps-0 mb-3">
-										<li class="text-danger text-capitalize">{{bilan.etat}}</li>
+										<li class="text-danger text-capitalize">{{Reclamation.etat}}</li>
 										<li class="text-capitalize">
 											<i class="far fa-user me-2"></i>
 											<a href="#!">admin</a>
 										</li>
 									</ul>
 									<h3 class="mb-4">
-										<a href="blog-details.html">{{bilan.animal}}</a>
+										<a href="blog-details.html">{{Reclamation.animal}}</a>
 									</h3>
-									<p>{{bilan.description}}</p>
-									<a href="{{path('app_BilanDesoin' , {'id': bilan.id})}}" class="text-dark text-primary-hover font-weight-600">info
+									<p>{{Reclamation.description}}</p>
+									<a href="{{path('app_Reclamation' , {'id': Reclamation.id})}}" class="text-dark text-primary-hover font-weight-600">info
 										<i class="ti-arrow-right ms-2 align-middle display-30"></i>
 									</a>
 								</div>

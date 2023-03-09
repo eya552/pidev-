@@ -1,0 +1,36 @@
+{% extends "./pdf/Base.pdf.html.twig" %}
+{% block body %}
+	<div class='col-md-12'>
+		<div class='col-md-3'>
+			<img id="logo" src="{{asset('assets/client/img/logos/Vet_Assur__2_-removebg-preview.png')}}" alt="logo"/>
+		</div>
+		<div class='col-md-6'></div>
+
+
+	</div>
+	<div class='col-md-12'>
+		<div class='col-md-3'></div>
+		<div class='col-md-6'>
+			<h1>Details de bilan n°{{ bilan_de_soin.id }}
+			</h1>
+			<br>
+			<br>
+			<p>Animal:
+				{{ bilan_de_soin.Animal }}</p><br>
+
+			<p>Prix:
+				{{ bilan_de_soin.Prix }}TND</p><br>
+
+
+			<p>Description:
+				{{ bilan_de_soin.Description }}</p><br>
+
+
+		</div>
+
+		<div class='col-md-3'></div>
+
+	</div>
+
+
+{% endblock %}

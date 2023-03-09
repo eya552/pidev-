@@ -1,0 +1,35 @@
+{%extends 'admin/Base.html.twig'%}
+
+{% block title %}Liste des bilans
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+{% endblock %}
+
+
+{% block body %}
+
+
+{# {% block javascript %}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script>
+			let Bilans = document.querySelector("#Bilans")
+let BilansGraph = new Chart(Bilans, {
+type: "pie",
+data: {
+labels: [
+"Bilan1", "Bilan2", "Bilan3"
+],
+datasets: [
+{
+label: "Repartition des Bilans",
+
+data: [
+2, 5, 3
+],
+backgroundColor: ["red", "green", "blue"]
+}
+]
+}
+})
+</script>{% endblock %}#}{% endblock %}
