@@ -64,6 +64,7 @@ class AnimalsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $animalsRepository->save($animal, true);
+            $animalsRepository->sms();
 
             return $this->redirectToRoute('app_animals_index', [], Response::HTTP_SEE_OTHER);
         }

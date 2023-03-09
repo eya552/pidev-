@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Animals;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Twilio\Rest\Client;
+
 
 /**
  * @extends ServiceEntityRepository<Animals>
@@ -72,6 +74,28 @@ class AnimalsRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public  function sms(){
+        // Your Account SID and Auth Token from twilio.com/console
+                $sid = 'ACc43f4ec80f6ee0adeb4c3eed0eb32068';
+                $auth_token = '8ef5f0b5c5beffa06a4681e506be67df';
+        // In production, these should be environment variables. E.g.:
+        // $auth_token = $_ENV["TWILIO_AUTH_TOKEN"]
+        // A Twilio number you own with SMS capabilities
+                $twilio_number = "+15674062774";
+        
+                $client = new Client($sid, $auth_token);
+                $client->messages->create(
+                // the number you'd like to send the message to
+                    '+21625968137',
+                    [
+                        // A Twilio phone number you purchased at twilio.com/console
+                        'from' => '+15674062774',
+                        // the body of the text message you'd like to send
+                        'body' => 'votre animal a été ajouter , merci de nous contacter pour plus de détails!'
+                    ]
+                );
+            }
 //    /**
 //     * @return Animals[] Returns an array of Animals objects
 //     */
