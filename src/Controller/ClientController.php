@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\Contrat;
-use App\Form\ContratType;
-use App\Repository\ContratRepository;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use App\Repository\ContratRepository;
+use phpseclib\Crypt\RSA;
 #[Route('/Client')]
 class ClientController extends AbstractController
 {
@@ -101,13 +100,19 @@ class ClientController extends AbstractController
             'controller_name' => 'ClientController',
         ]);
     }
-    #[Route('/afficher', name: 'app_contrat_afficher')]
-    public function afficher(ContratRepository $ContratRepository): Response
+     #[Route('/afficher', name: 'app_afficher', methods: ['GET'])]
+    public function afficher(ContratRepository $repository): Response
     {
-        return $this->render('client/afficher.html.twig', [
-            'contrats' => $ContratRepository->findAll(),
-        ]);
-    }
+       $contrat = $repository->findByidcontrat('2');
+    
 
+
+
+        return $this->render('Client/afficher.html.twig', [
+            'contrats' => $contrat,
+        ]);
+        
+    }
+    
 
 }

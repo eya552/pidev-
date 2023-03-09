@@ -38,6 +38,12 @@
             "./migrations/.gitignore"
         ]
     },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.4.0"
+    },
+    "neyric/yousign-bundle": {
+        "version": "v0.0.7"
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {

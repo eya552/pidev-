@@ -1,4 +1,3 @@
-
 {% extends 'admin/Base.html.twig'%}
 
 {% block body %}
@@ -12,6 +11,7 @@
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+
     <table class="table">
         <tbody>
             <tr>
@@ -19,36 +19,40 @@
                 <td>{{ contrat.id }}</td>
             </tr>
             <tr>
-                <th>Idclient</th>
-                <td>{{ contrat.idclient }}</td>
+                <th>NomClient</th>
+                <td>{{ contrat.NomClient }}</td>
             </tr>
             <tr>
-                <th>Idanimal</th>
-                <td>{{ contrat.idanimal }}</td>
+                <th>Prenom</th>
+                <td>{{ contrat.Prenom }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ contrat.Tel }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ contrat.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ contrat.Email }}</td>
             </tr>
             <tr>
                 <th>Datededebut</th>
-                <td>{{ contrat.datededebut ? contrat.datededebut|date('Y-m-d') : '' }}</td>
+                <td>{{ contrat.Datededebut }}</td>
             </tr>
             <tr>
                 <th>Datedefin</th>
-                <td>{{ contrat.datedefin ? contrat.datedefin|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Franchise</th>
-                <td>{{ contrat.franchise }}</td>
-            </tr>
-             <tr>
-                <th>Type de contrat</th>
-                <td>{{ contrat.typedecontrat }}</td>
+                <td>{{ contrat.Datedefin }}</td>
             </tr>
         </tbody>
     </table>
-<div style=" margin-bottom: 10px;">
+
+    <div style=" margin-bottom: 10px;">
     <a href="{{ path('app_contrat_index') }}" class=" btn btn-dark">back to list</a>
 
     <a href="{{ path('app_contrat_edit', {'id': contrat.id}) }}" class=" btn btn-warning">edit</a>
 
     {{ include('contrat/_delete_form.html.twig') }}
 {% endblock %}
- 

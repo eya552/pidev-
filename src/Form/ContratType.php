@@ -3,24 +3,23 @@
 namespace App\Form;
 
 use App\Entity\Contrat;
-use Doctrine\DBAL\Types\DateType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType as TypeDateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
 
 class ContratType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('idclient')
-            ->add('idanimal')
-            ->add('datededebut' , TypeDateType::class)
-            ->add('datedefin' ,TypeDateType::class)
-            ->add('franchise')
-            ->add('typedecontrat')
+            ->add('NomClient')
+            ->add('Prenom')
+            ->add('Tel')
+            ->add('adresse')
+            ->add('Email')
+            ->add('Datededebut')
+            ->add('Datedefin')
+            ->add('TypeContrat')
         ;
     }
 
@@ -30,4 +29,5 @@ class ContratType extends AbstractType
             'data_class' => Contrat::class,
         ]);
     }
+    
 }

@@ -13,6 +13,13 @@
                         <div class="col-md-12">
                             
                         </div>
+                        <div id="google_translate_element"></div>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
                         <div class="col-md-12">
                             <ul class="ps-0">
                                 <li><a href="index-2.html">Home</a></li>
@@ -30,45 +37,120 @@
         </section>
 
        <section>
+                     
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 mb-5 mb-lg-0">
                         <article class="card card-style10 border-0 h-auto">
-                            
-                            <div class="card-body p-1-9 pt-2-3">
+                              <div class="card-body p-1-9 pt-2-3">
                                 <ul class="entry-meta list-unstyled mb-3">
-                                <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Idclient</th>
-                <th>Idanimal</th>
+                                <div></div>
+          
+      <div> 
+           
+       <a href="{{ path('users_data_download') }}" class="btn btn-primary ">Generer PDF</a>  
+ <tbody>
+{% for contrat in contrats %}
+    <tr>
+      <div style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 20px; border: 2px solid #0057B8; border-radius: 5px; background-color: #F9F9F9;">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%;">
+          <img src="/assets/client/img/logos/Vet_Assur__1_-removebg-preview.png" alt="log" style="height: 50px; width: auto; margin-right: 20px;">
+          <h1 style="font-size: 28px; color: #0057B8; margin: 0;">Contrat Vet-Assur</h1>
+        </div>
+        <hr style="width: 100%; border: 0; height: 1px; background-color: #D4D4D4; margin: 20px 0;">
+        <div style="margin-bottom: 20px;">
+          <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 10px; border: 1px solid #D4D4D4; border-radius: 5px;">
+            <div style="margin-right: 20px;">
+            <style>
+        #google_translate_element {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #b0f2b6;
+            border: 1px solid #b0f2b6;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+        }
+
+        #google_translate_element:hover {
+            cursor: pointer;
+            opacity: 0.9;
+            background-color: #b0f2b6;
+        }
+        #google_translate_element {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+    </style>
+    
+    {# TRADUCTION #}
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+              <strong>Nom Client :</strong> {{ contrat.NomClient}}<br>
+              <strong>Prenom :</strong> {{ contrat.Prenom}}<br>
+              <strong>Tel :</strong> {{ contrat.Tel }}<br>
+              <strong>adresse:</strong> {{ contrat.adresse }}<br>
+              <strong>Email :</strong> {{ contrat.Email}}<br>
+              
+             <div>
+              <strong>Date de début :</strong> {{ contrat.Datededebut|date('d/m/Y') }}<br>
+              <strong>Date de fin :</strong> {{ contrat.Datedefin|date('d/m/Y') }}
+            </div>
+              <strong>Type de contrat :</strong> {{ contrat.TypeContrat }}<br>
+             <strong>Mode de paiement :
+            </div>
+            
+          
+        </div>
+        <div style="display: flex; flex-direction: row; justify-content: flex-end; width: 100%;">
+          <p style="font-size: 14px; margin: 0;">Fait le {{ "now"|date("d/m/Y") }}</p>
+        </div>
+        <div style="display: flex; flex-direction: row; justify-content: flex-end; width: 100%; margin-top: 20px;">
+          <img src="https://example.com/signature.png" alt="Signature" style="height: 50px; width: auto;">
+        </div>
+      </div>
+    </tr>
+  {% else %} 
+    <tr>
+      <td colspan="6" class="text-center">Aucun contrat trouvé.</td>
+    </tr>
+    
+    
+  {% endfor %}
+</tbody>
+             
+                   {# <table class="table"> #}
+        {# <thead> #}
+            {# <tr> #}
+                {# <th>Id</th> #}
+                {# <th>Idclient</th> #}
+                {# <th>Idanimal</th> #}
                 {# <th>Datededebut</th>
                 <th>Datedefin</th> #}
-                <th>Franchise</th>
-                <th>Typecontrat </th>
+                {# <th>Franchise</th> #}
+                {# <th>Typecontrat </th> #}
                 
-            </tr>
-        </thead>
-        <tbody>
-        {% for contrat in contrats %}
-            <tr>
-                <td>{{ contrat.id }}</td>
-                <td>{{ contrat.idclient }}</td>
-                <td>{{ contrat.idanimal }}</td>
+            {# </tr> #}
+        {# </thead> #}
+        {# <tbody> #}
+        {# {% for contrat in contrats %} #}
+            {# <tr> #}
+                {# <td>{{ contrat.id }}</td> #}
+                {# <td>{{ contrat.idclient }}</td> #}
+                {# <td>{{ contrat.idanimal }}</td> #}
                {# <td>{{contrat.datededebut.format('d/m/Y')}}</td>
                 <td>{{contrat.datedefin.format('d/m/Y')}}</td> #}
-                <td>{{ contrat.franchise }}</td>
-              <td>{{ contrat.typedecontrat }}</td>
-                <td>
+                {# <td>{{ contrat.franchise }}</td> #}
+              {# <td>{{ contrat.typedecontrat }}</td> #}
+                {# <td> #}
                 
-                </td>
-            </tr>
-        {% else %}
+                {# </td> #}
+            {# </tr> #}
+        {# {% else %} #}
            
-        {% endfor %}
-        </tbody>
-    </table>
+        {# {% endfor %} #}
+        {# </tbody> #}
+    {# </table> #}
 
 
 </section>

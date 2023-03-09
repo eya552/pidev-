@@ -14,6 +14,7 @@
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                 <h6 class="text-white text-capitalize ps-3">Table des contrats </h6>
+                  <a class="btn btn-primary" href="{{path('trie')}}">Tri par date</a>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -25,16 +26,32 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs  opacity-7">Id_contrat</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Id_Client</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id-animal</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">datededebut</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">NomClient</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Prenom</th>
+                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tel</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">adresse</th>
+                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Datededebut</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">datedefin</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">franchise</th>
+                     
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">TypeContrat</th>
                       
                     </tr>
                   </thead>
+                  <div class="carddd">
+     
+{{ form_start(searchForm,{attr:{novalidate:'novalidate'}}) }}
+   {{ form_widget(searchForm.NomClient, {'attr': {'class': 'form-control', 'placeholder':"Chercher Par Id "}}) }}
+ 
+
+  <div class="col-12">
+  {{ form_label(searchForm.Chercher, null, {'label_attr': {'class': 'form-label'}}) }}
+   {{ form_widget(searchForm.Chercher, {'attr': {'class': 'form-control'}}) }}
+ 
+</div>
+</div>
                   <tbody>
+                
 
                   {% for contrat in contrats %}
                     <tr>
@@ -47,24 +64,32 @@
                         </div>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{contrat.Idclient}}</span>
+                        <span class="text-secondary text-xs font-weight-bold">{{contrat.NomClient}}</span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{contrat.Prenom}}</span>
+                      </td>
+                       <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{contrat.Tel}}</span>
+                      </td>
+                       <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{contrat.adresse}}</span>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">{{contrat.idanimal}}</p>  
+                        <p class="text-xs font-weight-bold mb-0">{{contrat.Email}}</p>  
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0">{{contrat.datededebut}}</p>
+                        <p class="text-xs font-weight-bold mb-0">{{contrat.Datededebut}}</p>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{contrat.datedefin}}</span>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold">{{contrat.franchise}}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{contrat.typedecontrat}}</span>
+                        <span class="text-secondary text-xs font-weight-bold">{{contrat.Datedefin}}</span>
                       </td>
                       
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{contrat.TypeContrat}}</span>
+                      </td>
+           
                       
                       <td class="align-middle">
                       
@@ -76,9 +101,13 @@
                         </a>
                       </td>
                     </tr>
+                    
                   {% endfor %}
+                 
                      </tbody>
+                      
                 </table>
+                 
                 {% endif %}
                 <a href="{{ path('app_contrat_new') }}" class="btn btn-success text-gradient px-3 mb-0">Create new</a> 
                   
@@ -91,9 +120,12 @@
         </div>
       </div>
       
+      {{ knp_pagination_render(contrats) }}
       
     </div>
   </main>
-  
+   
   {% endblock %}
+   
+  
  

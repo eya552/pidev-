@@ -3,9 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\ContratRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Ignore;
 
 #[ORM\Entity(repositoryClass: ContratRepository::class)]
 class Contrat
@@ -16,134 +16,143 @@ class Contrat
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message:"il est obligatoire d'ajouter Id client")]
-    private ?string $idclient = null;
-   
+    #[Assert\NotBlank(message:"il est obligatoire d'ajouter nom client")]
+    private ?string $NomClient = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message:"il est obligatoire d'ajouter Id animal")]
-    private ?string $idanimal = null;
+    #[Assert\NotBlank(message:"il est obligatoire d'ajouter prenom client")]
+    private ?string $Prenom = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"il est obligatoire d'ajouter Tel client")]
+    private ?string $Tel = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"il est obligatoire d'ajouter adresse client")]
+    private ?string $adresse = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"il est obligatoire d'ajouter Email client")]
     
-/**
- * @var \DateTime
- *
- *@ORM\Column(name="date_actualite", type="date")
- */
-#[Assert\NotBlank(message:"il est obligatoire d'ajouter date de debut")]
-private $datededebut;
-
-/**
- * @var \DateTime
- *
- * @ORM\Column(name="date_actualite", type="date")
- */
-#[Assert\NotBlank(message:"il est obligatoire d'ajouter date de fin")]
-private $datedefin;
-
-  //  #[ORM\Column(type: Types::DATE_MUTABLE)]
-   // private ?\DateTimeInterface $datededebut = null;
-
-   // #[ORM\Column(type: Types::DATE_MUTABLE)]
-    //private ?\DateTimeInterface $datedefin = null;
+    /**
+     * @Assert\Regex(
+     *     pattern="/@/",
+     *     message="L'adresse email doit contenir le caractère '@'."
+     * )
+     */
+    private ?string $Email = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message:"il est obligatoire d'ajouter la franchise")]
-    private ?string $franchise = null;
-   
-    #[ORM\ManyToOne(inversedBy: 'contrat')]
+    #[Assert\NotBlank(message:"il est obligatoire d'ajouter date de debut client")]
+    private ?string $Datededebut = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"il est obligatoire d'ajouter date de fin client")]
+    private ?string $Datedefin = null;
+
+    #[ORM\ManyToOne(inversedBy: 'contrats')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Assert\NotBlank(message:"il est obligatoire d'ajouter Type de contrat")]
-    private ?Typecontrat $typedecontrat = null;
-    
+    private ?TypeContrat $TypeContrat = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdclient(): ?string
+    public function getNomClient(): ?string
     {
-        return $this->idclient;
+        return $this->NomClient;
     }
 
-    public function setIdclient(string $idclient): self
+    public function setNomClient(string $NomClient): self
     {
-        $this->idclient = $idclient;
+        $this->NomClient = $NomClient;
 
         return $this;
     }
 
-    public function getIdanimal(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->idanimal;
+        return $this->Prenom;
     }
 
-    public function setIdanimal(string $idanimal): self
+    public function setPrenom(string $Prenom): self
     {
-        $this->idanimal = $idanimal;
+        $this->Prenom = $Prenom;
 
         return $this;
     }
 
-    public function getDatededebut(): ?\DateTimeInterface
+    public function getTel(): ?string
     {
-        return $this->datededebut;
+        return $this->Tel;
     }
 
-    public function setDatededebut(\DateTimeInterface $datededebut): self
+    public function setTel(string $Tel): self
     {
-        $this->datededebut = $datededebut;
+        $this->Tel = $Tel;
 
         return $this;
     }
 
-    public function getDatedefin(): ?\DateTimeInterface
+    public function getAdresse(): ?string
     {
-        return $this->datedefin;
+        return $this->adresse;
     }
 
-    public function setDatedefin(\DateTimeInterface $datedefin): self
+    public function setAdresse(string $adresse): self
     {
-        $this->datedefin = $datedefin;
+        $this->adresse = $adresse;
 
         return $this;
     }
 
-    public function getFranchise(): ?string
+    public function getEmail(): ?string
     {
-        return $this->franchise;
+        return $this->Email;
     }
 
-    public function setFranchise(string $franchise): self
+    public function setEmail(string $Email): self
     {
-        $this->franchise = $franchise;
+        $this->Email = $Email;
 
         return $this;
     }
 
-    public function getTypedecontrat(): ?Typecontrat
+    public function getDatededebut(): ?string
     {
-        return $this->typedecontrat;
+        return $this->Datededebut;
     }
 
-    
-
-    public function setTypedecontrat(?Typecontrat $typedecontrat): self
+    public function setDatededebut(string $Datededebut): self
     {
-        $this->typedecontrat = $typedecontrat;
+        $this->Datededebut = $Datededebut;
 
         return $this;
     }
 
-    public function __toString()
+    public function getDatedefin(): ?string
     {
-        $this->datededebut;
-        $this->datedefin;
-        return $this;
-         
+        return $this->Datedefin;
     }
 
+    public function setDatedefin(string $Datedefin): self
+    {
+        $this->Datedefin = $Datedefin;
 
+        return $this;
+    }
 
+    public function getTypeContrat(): ?Typecontrat
+    {
+        return $this->TypeContrat;
+    }
+
+    public function setTypeContrat(?Typecontrat $TypeContrat): self
+    {
+        $this->TypeContrat = $TypeContrat;
+
+        return $this;
+    }
     
 }

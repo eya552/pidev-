@@ -2,14 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\TypecontratRepository;
+use App\Repository\TypeContratRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Ignore;
 
-#[ORM\Entity(repositoryClass: TypecontratRepository::class)]
-class Typecontrat
+#[ORM\Entity(repositoryClass: TypeContratRepository::class)]
+class TypeContrat
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -20,17 +21,17 @@ class Typecontrat
     #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
     private ?string $typeContrat = null;
 
-    #[ORM\Column]
+    #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message:"Ce champs doit etre rempli")]
     #[Assert\Positive(message:"Prix doit etre un nombre positif")]
-    private ?int $prix = null;
-
-    #[ORM\OneToMany(mappedBy: 'typedecontrat', targetEntity: Contrat::class)]
-    private Collection $contrat;
+    private ?string $prix = null;
+    #[Ignore]
+    #[ORM\OneToMany(mappedBy: 'TypeContrat', targetEntity: Contrat::class)]
+    private Collection $contrats;
 
     public function __construct()
     {
-        $this->contrat = new ArrayCollection();
+        $this->contrats = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -50,12 +51,12 @@ class Typecontrat
         return $this;
     }
 
-    public function getPrix(): ?int
+    public function getPrix(): ?string
     {
         return $this->prix;
     }
 
-    public function setPrix(int $prix): self
+    public function setPrix(string $prix): self
     {
         $this->prix = $prix;
 
@@ -65,16 +66,16 @@ class Typecontrat
     /**
      * @return Collection<int, Contrat>
      */
-    public function getContrat(): Collection
+    public function getContrats(): Collection
     {
-        return $this->contrat;
+        return $this->contrats;
     }
 
     public function addContrat(Contrat $contrat): self
     {
-        if (!$this->contrat->contains($contrat)) {
-            $this->contrat->add($contrat);
-            $contrat->setTypedecontrat($this);
+        if (!$this->contrats->contains($contrat)) {
+            $this->contrats->add($contrat);
+            $contrat->setTypeContrat($this);
         }
 
         return $this;
@@ -82,10 +83,10 @@ class Typecontrat
 
     public function removeContrat(Contrat $contrat): self
     {
-        if ($this->contrat->removeElement($contrat)) {
+        if ($this->contrats->removeElement($contrat)) {
             // set the owning side to null (unless already changed)
-            if ($contrat->getTypedecontrat() === $this) {
-                $contrat->setTypedecontrat(null);
+            if ($contrat->getTypeContrat() === $this) {
+                $contrat->setTypeContrat(null);
             }
         }
 
@@ -93,6 +94,6 @@ class Typecontrat
     }
     public function __toString()
     {
-        return $this->typeContrat;
+        return $this-> typeContrat;
     }
 }
