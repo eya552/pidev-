@@ -16,6 +16,6 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerSdROxOi\App_KernelDevDebugContainer([
     'container.build_hash' => 'SdROxOi',
-    'container.build_id' => 'ebd4194a',
-    'container.build_time' => 1678404549,
+    'container.build_id' => '1815525a',
+    'container.build_time' => 1678408619,
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerSdROxOi');
