@@ -1,0 +1,21 @@
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}})}} 
+    {{form_label(form.idUser,"ID USER")}}
+    {{ form_widget(form.idUser) }}
+    <span style="color: red">{{ form_errors(form.idUser)}} </span>
+    </br>
+
+    {{form_label(form.contenu,"Votre commentaire")}}
+    {{ form_widget(form.contenu) }}
+    <span style="color: red">{{ form_errors(form.contenu)}} </span>
+    </br>
+    <div style="display:none"> {{form_label(form.dateCommentaire,"La date")}}
+    {{ form_widget(form.dateCommentaire) }}
+    <span style="color: red">{{ form_errors(form.dateCommentaire)}} </span>
+    </br>
+    {{form_label(form.Actualite,"Actualite")}}
+    {{ form_widget(form.Actualite) }}
+    <span style="color: red">{{ form_errors(form.Actualite)}} </span>
+    </br></div>
+    <button class="btn btn-success">{{ button_label|default('Publier') }}</button>
+    <a class="btn btn-secondary" href="{{ path('app_client_actualite_index') }}">Retour à la liste des actualités</a>
+{{ form_end(form) }}

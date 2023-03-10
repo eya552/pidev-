@@ -1,0 +1,6 @@
+<h1>Actualite {{ actualite.id }}</h1>
+<p><b> TITRE : </b>{{ actualite.titre }}</p>
+<p><b> contenu : </b>{{ actualite.contenu }}</p>
+<p><b> DATE : </b>{{ actualite.dateActualite ? actualite.dateActualite|date('Y-m-d') : '' }}</p>
+<p><b> commentaires : </b>{{ actualite.commentaires }}</p>
+<p><b> imageFile : </b>{{ actualite.imageFile }}</p>

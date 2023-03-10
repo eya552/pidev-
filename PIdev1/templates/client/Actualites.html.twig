@@ -1,0 +1,139 @@
+{% extends 'client/base.html.twig' %}
+
+{% block title %}Hello ClientController!{% endblock %}
+
+{% block body %}
+ <!-- PAGE TITLE
+        ================================================== -->
+
+        .li{
+            
+        }
+        <section class="page-title-section bg-img cover-background left-overlay-dark" data-overlay-dark="8" data-background="{{asset('assets/client/img/banner/page-title.jpg')}}">
+            <div class="container">
+                <div class="page-title mx-1-6 mx-lg-2-0 mx-xl-2-6 mx-xxl-2-9">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Blog Grid</h1>
+                        </div>
+                        <div class="col-md-12">
+                            <ul class="ps-0">
+                                <li><a href="index-2.html">Home</a></li>
+                                <li><a href="#!">Blog Grid</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-inline-block p-3 rounded-circle bg-primary position-absolute z-index-1 top-35 right-20 ani-top-bottom"></div>
+            <div class="d-inline-block p-2 rounded-circle bg-secondary position-absolute z-index-1 top-25 left-10 ani-top-bottom"></div>
+            <div class="d-inline-block bg-white p-3 ani-zoomin rounded-circle position-absolute bottom-5 left-10 opacity1 z-index-1"></div>
+        </section>
+
+        <!-- ACTUALITES
+        ================================================== -->
+<section>
+            <div class="container">
+            <div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                </ol>
+            </nav>
+        </div>
+    <div class="row ">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <div style="display: flex">
+                        <div class="col-md-5">
+                        </div>
+                        <form method="get" class="forms-sample" style="margin-left: -42px" >
+                            <div class="form-group col-md-4" style="display: flex; width: 100%!important; margin: 0px!important;">
+
+                                <div class="form-check">
+                                    <label class="form-check-label" style="width: 92px;margin-left: -2px;margin-right: 10px;">
+                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" 
+                                         value="titreActualite">Titre</label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label" style="width: 86px;margin-left: -2px;margin-right: 10px;">
+                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="typeContent" >Contenu</label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label" style="width: 86px;margin-left: -2px;margin-right: 10px;">
+                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="typeDate" > Date</label>
+                                </div>
+
+                                {# <div class="form-check">
+                                    <label class="form-check-label" style="width: 86px;margin-left: -2px;margin-right: 10px;">
+                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="lieuEvenement" >Lieu</label>
+                                </div> #}
+
+                                <button type="Submit" class="btn btn-success btn-fw" style="margin: auto; ">Sort</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <ul class="navbar-nav w-100" style="margin-top: 18px;">
+                        <li class="nav-item w-100">
+                            <form name="Search-method" id="Search-method"method="post" class="forms-sample" style="display: flex">
+                                <div class="form-group col-md-5">
+                                    <label style="margin-top: 11px;margin-left: 10px;margin-right: 14px;padding-bottom: 7px;;">Options Recherche</label>
+                                    <select name="optionsearch" class="js-example-basic-single" style="width: 200px;height: 38px; color: white; background-color: #191c24; border-radius: 4px;text-align: center;border: 2px solid #0090e7;margin-right: 15px;">
+                                        <option value="">Choisi un Critére</option>
+                                        <option value="titreActualite" > Titre</option>
+                                        <option value="contenuActualite"> Contenu</option>
+                                       
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-7">
+                                    <div class="input-group">
+                                        <input name="Search" type="text" class="form-control" placeholder="Tapez ici" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-sm btn-primary" type="Submit">Rechercher</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                <div class="row gx-xxl-5 mt-n2-2">
+                
+                
+                     {% for actualite in actualitess %}
+           
+                    <div class="col-md-6 col-lg-4 mt-2-2 wow fadeInUp" data-wow-delay="300ms">
+                        <article class="card card-style10 border-0 h-100 image-hover">
+                            <div class="card-img position-relative">
+                                <img src="{{ asset('media/'~actualite.imageFile) }}" class="rounded-top" alt="...">
+                                  </div>
+                          
+                            <div class="card-body p-1-9 pt-2-3">
+                                <ul class="card-list ps-0 mb-3">
+                                    <li><i class="far fa-calendar me-2"></i>{{ actualite.dateActualite ? actualite.dateActualite|date('Y-m-d') : '' }}</li>
+                                      </ul>
+                                <h3 class="h4 mb-4"><a href="{{ path('app_client_actualite_show', {'id': actualite.id}) }}">{{ actualite.titre }}</a></h3>
+                                <a href="{{ path('app_client_actualite_show', {'id': actualite.id}) }}" class="text-dark text-primary-hover font-weight-600">Détails <i class="ti-arrow-right ms-2 align-middle display-30"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                     
+        {% endfor %}
+        <df>
+        {% for i in 1.. ((total / limit)|round(0,'ceil')) %}
+            <de>
+                            <a href="?page={{i}}"  > {{i}} </a>
+            </de>
+             {% endfor %} 
+        </df> 
+                   
+                </div>
+            </div>
+        </section>
+
+
+    
+{% endblock %}
