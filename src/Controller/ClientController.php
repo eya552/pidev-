@@ -2,9 +2,17 @@
 
 namespace App\Controller;
 
+use App\Repository\BilanDeSoinRepository;
+use App\Entity\BilanDeSoin;
+use App\Entity\Reclamation;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+
 #[Route('/Client')]
 class ClientController extends AbstractController
 {
@@ -83,21 +91,95 @@ class ClientController extends AbstractController
     }
 
 
-    #[Route('/BilansDesoin', name: 'app_BilansDesoin')]
-    public function BilansDesoin(): Response
+
+    #[Route('/BilansDesoinC', name: 'app_BilansDesoinC')]
+    public function BilansDesoinC(BilanDeSoinRepository $repository): Response
     {
-        return $this->render('client/BilansDesoin.html.twig', [
-            'controller_name' => 'ClientController',
+        $bilans = $repository->findByIdClient('1');
+        return $this->render('Client/BilansDeSoin.html.twig', [
+            'bilans' => $bilans,
         ]);
     }
 
-    #[Route('/BilanDesoin', name: 'app_BilanDesoin')]
-    public function BilanDesoin(): Response
+    #[Route('/BilansDesoinV', name: 'app_BilansDesoinV')]
+    public function BilansDesoinV(BilanDeSoinRepository $repository): Response
     {
-        return $this->render('client/BilanDesoin.html.twig', [
-            'controller_name' => 'ClientController',
+        $bilans = $repository->findByIdVeterinaire('3');
+        return $this->render('Client/BilansDeSoin.html.twig', [
+            'bilans' => $bilans,
         ]);
     }
 
+
+
+
+    #[Route('/BilanDesoin/{id}', name: 'app_BilanDesoin', methods: ['GET'])]
+    public function showB(BilanDeSoin $bilanDeSoin): Response
+    {
+        return $this->render('Client/BilanDeSoin.html.twig', [
+            'bilan_de_soin' => $bilanDeSoin,
+        ]);
+    }
+
+    #[Route('/BilanDesoinpdf/{id}', name: 'app_BilanDesoinpdf', methods: ['GET'])]
+    public function Bilanpdf(BilanDeSoin $bilanDeSoin)
+    {
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+        $pdfOptions->setIsRemoteEnabled(true);
+        $pdfOptions->set('isHtml5ParserEnabled', true);
+        $pdfOptions->set('isFontSubsettingEnabled', true);
+        $pdfOptions->set('isPhpEnabled', true);
+        $pdfOptions->set('debugKeepTemp', true);
+        $dompdf = new Dompdf($pdfOptions);
+        $context = stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => False,
+                'allow_self_signed' => true,
+            ]
+        ]);
+        $dompdf->setHttpContext($context);
+        $html = $this->renderView('Client/pdf.html.twig', [
+            'bilan_de_soin' => $bilanDeSoin,
+        ]);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A5', 'Portrait');
+        $dompdf->render();
+        $fichier = 'Bilan de soin' . '.pdf';
+        $dompdf->stream($fichier, [
+            'Attachement' => true
+        ]);
+        return new Response();
+    }
+
+
+
+
+    #[Route('/ReclamationsC', name: 'app_ReclamationsC')]
+    public function ReclamationsC(BilanDeSoinRepository $repository): Response
+    {
+        $bilans = $repository->findByIdClient('1');
+        return $this->render('Client/Reclamations.html.twig', [
+            'bilans' => $bilans,
+        ]);
+    }
+
+    //reclamation by bilan
+    // #[Route('/ReclamationsB', name: 'app_ReclamationsC')]
+    // public function ReclamationsB(BilanDeSoinRepository $repository): Response
+    // {
+    //     $bilans = $repository->findByBilan('1');
+    //     return $this->render('Client/Reclamations.html.twig', [
+    //         'bilans' => $bilans,
+    //     ]);
+    // }
+    #[Route('/Reclamation/{id}', name: 'app_Reclamation', methods: ['GET'])]
+    public function showR(Reclamation $Reclamation): Response
+    {
+        return $this->render('Client/Reclamation.html.twig', [
+            'Reclamation' => $Reclamation,
+        ]);
+    }
 
 }

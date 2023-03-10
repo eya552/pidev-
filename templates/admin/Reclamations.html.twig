@@ -1,0 +1,125 @@
+{%extends 'admin/Base.html.twig'%}
+
+{% block title %}Listes des reclamations
+{% endblock %}
+
+{% block body %}
+
+
+	<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg " style='margin-left: 20%'>
+
+		<div class="container-fluid py-4">
+			<div class="row" style="display: flex;align-items: center;justify-content: center;margin-top: 150px;">
+				<div class="col-12">
+					<div class="card my-4">
+						<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+							<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+								<h6 class="card-title text-capitalize ps-3">Table des reclamations
+								</h6>
+							</div>
+							<div class=" tablesearch">
+								<form method="get" class="form-inline my-2 my-lg-0">
+									<input type="search" id="myInput" class="form-control pl-6" placeholder="Search division"/>
+
+									<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+									{% block javascript %}
+										<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+										<script>
+											$(document).ready(function () {
+$("#myInput").on("keyup", function () {
+var value = $(this).val().toLowerCase();
+$("#myTable tr").filter(function () {
+$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+});
+})
+});
+										</script>
+
+									{% endblock %}
+
+								</form>
+
+							</div>
+
+						</div>
+						<div class="card-body px-0 pb-2">
+							<div class="table-responsive p-0">
+
+
+								{% if pagination %}
+									<table class="table align-items-center mb-0" id="myTable">
+
+										<thead>
+											<tr>
+												<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id_Reclamation</th>
+												<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Bilan</th>
+												<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id_Client</th>
+												<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Text</th>
+												<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Etat</th>
+												<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+											</tr>
+										</thead>
+										<tbody>
+
+											{% for reclamation in pagination %}
+												<tr>
+													<td>
+														<div class="d-flex px-2 py-1">
+
+															<div class="d-flex flex-column justify-content-center">
+																<p class="text-xs font-weight-bold mb-0">{{reclamation.id}}</p>
+															</div>
+														</div>
+													</td>
+													<td>
+														<p class="text-xs font-weight-bold mb-0">{{reclamation.Bilan}}</p>
+													</td>
+													<td class="align-middle text-center text-sm">
+														<p class="text-xs font-weight-bold mb-0">{{reclamation.IdClient}}</p>
+													</td>
+													<td class="align-middle text-center">
+														<span class="text-secondary text-xs font-weight-bold">{{reclamation.Text}}</span>
+													</td>
+													<td class="align-middle text-center text-sm">
+														{% if reclamation.etat =='refusé' %}
+															<span class="badge rounded-pill bg-danger">{{reclamation.etat}}</span>
+														{% elseif reclamation.etat =='accepté' %}
+															<span class="badge rounded-pill bg-success">{{reclamation.etat}}</span>
+														{% else %}
+															<span class="badge rounded-pill bg-secondary">{{reclamation.etat}}</span>
+														{% endif %}
+													</td>
+
+													<td class="align-middle">
+
+														<a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}" class=" btn btn-warning  px-3 mb-0 " data-toggle="tooltip" data-original-title="Edit user">
+															Modifier
+														</a>
+														<a href="{{ path('app_reclamation_delete', {'id': reclamation.id}) }}" class="btn btn-danger  text-gradient px-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">
+															Supprimer
+														</a>
+													</td>
+												</tr>
+											{% endfor %}
+
+
+										</tbody>
+									</table>
+								{% endif %}
+								<a href="{{ path('app_reclamation_new2') }}" class="btn btn-success text-gradient px-3 mb-0">Create new</a>
+
+								<div>
+									{{ knp_pagination_render(pagination) }}
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</main>
+
+{% endblock %}
