@@ -215,6 +215,51 @@ return $this->render('client_actualite/show.html.twig', [
 
 }
 
+#[Route('/Actualites/PDF', name: 'users_data_download')]
+
+    public function usersDataDownload(ActualiteRepository $actualite)
+    {
+        // On définit les options du PDF
+        $pdfOptions = new Options();
+        // Police par défaut
+        $pdfOptions->set('defaultFont', 'Arial');
+        $pdfOptions->setIsRemoteEnabled(true);
+    
+        // On instancie Dompdf
+        $dompdf = new Dompdf($pdfOptions);
+        $actualite= $actualite->findAll();
+       
+        // $classrooms= $this->getDoctrine()->getRepository(classroomRepository::class)->findAll();
+    
+        $context = stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                'allow_self_signed' => TRUE
+            ]
+        ]);
+        $dompdf->setHttpContext($context);
+    
+        // On génère le html
+        $html =$this->renderView('client_actualite/show.html.twig',[
+            'actualite'=>$actualite
+        ]);
+    
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+    
+        // On génère un nom de fichier
+        $fichier = 'Liste-contrat' .'.pdf';
+    
+        // On envoie le PDF au navigateur
+        $dompdf->stream($fichier, [
+            'Attachment' => true
+        ]);
+    
+        return new Response() ;
+    }
+
 
     }
 
