@@ -9,6 +9,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 use App\Repository\BilanDeSoinRepository;
 use App\Repository\ReclamationRepository;
 
+
 #[Route('/Admin')]
 class AdminController extends AbstractController
 {
@@ -64,6 +65,7 @@ class AdminController extends AbstractController
             'ReclamationsClient' => $ReclamationsClient,
             'ReclamationsColor' => $ReclamationsColor,
 
+
         ]);
     }
 
@@ -78,6 +80,7 @@ class AdminController extends AbstractController
     public function indexProfile(): Response
     {
         return $this->render('admin/profile.html.twig', [
+
             'controller_name' => 'AdminController',
         ]);
     }
@@ -88,11 +91,10 @@ class AdminController extends AbstractController
     public function indexdashboard(): Response
     {
         return $this->render('admin/dashboard.html.twig', [
+
             'controller_name' => 'AdminController',
         ]);
     }
-
-
 
 
 
@@ -102,6 +104,7 @@ class AdminController extends AbstractController
     public function indexsignin(): Response
     {
         return $this->render('admin/sign-in.html.twig', [
+
             'controller_name' => 'AdminController',
         ]);
     }
@@ -119,6 +122,7 @@ class AdminController extends AbstractController
 
 
 
+
     // #[Route('/Bilans', name: 'display_Bilans')]
     // public function indexBilan(): Response
     // {
@@ -128,3 +132,4 @@ class AdminController extends AbstractController
 
     // }
 }
+

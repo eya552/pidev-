@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
+
 #[Route('/Client')]
 class ClientController extends AbstractController
 {
@@ -180,4 +181,5 @@ class ClientController extends AbstractController
             'Reclamation' => $Reclamation,
         ]);
     }
+
 }
