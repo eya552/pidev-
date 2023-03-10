@@ -1,0 +1,182 @@
+{% extends 'client/base.html.twig' %}
+
+{% block title %}
+<title>Actualité</title>
+{% endblock %}
+
+
+
+{% block body %}
+<div style="margin: 10%;">
+    <h1>Actualite</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ actualite.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ actualite.titre }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ actualite.contenu }}</td>
+            </tr>
+            <tr>
+                <th>DateActualite</th>
+                <td>{{ actualite.dateActualite ? actualite.dateActualite|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ImageFile</th>
+                <td><img src="{{ asset('media/'~actualite.imageFile) }}" style=" width:60px; height:50px; " alt=""/></td> 
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary"href="{{ path('app_client_actualite_index') }}">Retour à la liste des actualités</a>
+
+    {# <a href="{{ path('app_client_actualite_edit', {'id': actualite.id}) }}">edit</a> #}
+
+    {# {{ include('client_actualite/_delete_form.html.twig') }} #}
+    
+    </div>
+    <section style="padding:0">
+  <div class="container my-5 py-5 text-dark">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12 col-lg-10 col-xl-8">
+        <div class="card mb-3">
+          <div class="card-body">
+           
+           
+                  <h6 class="text-primary fw-bold mb-0">
+                    <div>
+                  <div> Ajouter un commentaire</div>
+                  {# <a class="btn btn-success" href="{{ path('export_actualite_pdf', {'id': actualite.id}) }}">Exporter en PDF</a> #}
+                  </div>
+                    <span class="text-dark ms-2" style="display:none"><textarea  class="w-100"></textarea></span>
+                      <a class="btn btn-success" style="margin:1em;" href="{{path('app_client_commentaire_new', {'id': actualite.id}) }}"> Ajouter un commentaire </a>
+                  </h6>
+                  {# <p class="mb-0"><div>{{commentaire.dateCommentaire}} </div></p> #}
+              
+                
+          
+          </div>
+        </div>
+        {% for commentaire in commentaires %}
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="d-flex flex-start">
+              {# <img class="rounded-circle shadow-1-strong me-3"
+                src="public\media\default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg" alt="avatar" width="40"
+                height="40" /> #}
+              <div class="w-100">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h6 class="text-primary fw-bold mb-0">
+                    <div>
+        <div> le user d'identifiant {{commentaire.idUser}} a postulé :</div>
+    </div>
+                    <span class="text-dark ms-2"><div> {{commentaire.contenu}}</div></span>
+                  </h6>
+                  {# <p class="mb-0"><div>{{commentaire.dateCommentaire}} </div></p> #}
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <p class="small mb-0" style="color: #aaa;">
+                    {# <a href="#!" class="link-grey">Remove</a> • #}
+                    {# <a href="#!" class="link-grey">Reply</a> • #}
+                    {# <a href="#!" class="link-grey">Translate</a> #}
+                  </p>
+                  
+                  <div class="d-flex flex-row">
+                         <style>
+                         
+
+:root {
+  --length: 30px;
+  --duration: 0.4s;
+}
+
+.like {
+  height: var(--length);
+  width: var(--length);
+  transition: transform var(--duration) ease;
+  cursor: pointer;
+}
+
+
+.like-icon {
+  transition: transform var(--duration) ease;
+  z-index: 5;
+}
+.like-icon svg {
+  position: static;
+  transition: background-color var(--duration) ease, transform calc(var(--duration) * 1.5) ease, opacity calc(var(--duration) * 1.5) ease;
+}
+.like-icon svg path {
+  fill: #e5e5e5;
+}
+
+.checkbox {
+  position: relative;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+.checkbox:checked ~ .like-icon svg.below {
+  transform: scale(1.6);
+  opacity: 0;
+}
+.checkbox:checked ~ .like-icon svg.below path {
+  fill: #77c44c;
+}
+.checkbox:checked ~ .like-icon svg.front path {
+  fill: #77c44c;
+}
+
+.like:active {
+  transform: scale(0.9);
+  transition-duration: calc(var(--duration) / 3);
+}
+.like:active .bg::before {
+  transform: translateY(0) scale(0.9);
+  opacity: 0.25;
+}
+                         </style>
+                                  <div id="app">
+                      <label class="like">
+                        <input type="checkbox" class="checkbox" />
+                        <div class="bg"></div>
+                        <div class="like-icon">
+                         
+                          <svg viewBox="0 0 32 32" class="front">
+                            <path
+                              d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"
+                              stroke-width="2"
+                            />
+                          </svg>
+                        </div>
+                      </label>
+                    </div>
+                 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+        
+  </div>
+</section>
+    {# <div>
+        {% for commentaire in commentaires %}
+        <div> le user d'identifiant {{commentaire.idUser}} a postulé :</div>
+         <div> {{commentaire.contenu}}</div>
+        {% endfor %}
+    </div> #}
+
+
+{% endblock %}

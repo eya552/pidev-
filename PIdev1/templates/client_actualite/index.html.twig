@@ -1,0 +1,47 @@
+{% extends 'client/base.html.twig' %}
+
+{% block title %}
+<title>Actualité</title>
+{% endblock %}
+
+
+
+{% block body %}
+<div style="margin-left: 300px; margin-top:20px; margin-right:200px; padding:50px;">
+    <h1>Liste des actualités</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>DateActualite</th>
+                <th>ImageFile</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for actualite in actualites %}
+            <tr>
+                <td>{{ actualite.id }}</td>
+                <td>{{ actualite.titre }}</td>
+                <td>{{ actualite.contenu }}</td>
+                <td>{{ actualite.dateActualite ? actualite.dateActualite|date('Y-m-d') : '' }}</td>
+                <td><img src="{{ asset('media/'~actualite.imageFile) }}" style=" width:60px; height:50px; " alt=""/></td> 
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_client_actualite_show', {'id': actualite.id}) }}">Détails</a>
+                    {# <a href="{{ path('app_client_actualite_edit', {'id': actualite.id}) }}">edit</a> #}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{# 
+    <a href="{{ path('app_client_actualite_new') }}">Create new</a> #}
+    </div>
+{% endblock %}

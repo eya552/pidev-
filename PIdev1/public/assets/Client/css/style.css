@@ -1,0 +1,55 @@
+
+
+:root {
+  --length: 15rem;
+  --duration: 0.4s;
+}
+
+.like {
+  display: block;
+  height: var(--length);
+  width: var(--length);
+  padding: 2.9rem;
+  border-radius: 2rem;
+  transition: transform var(--duration) ease;
+  cursor: pointer;
+}
+
+
+.like-icon {
+  transition: transform var(--duration) ease;
+  z-index: 5;
+}
+.like-icon svg {
+  position: absolute;
+  transition: background-color var(--duration) ease, transform calc(var(--duration) * 1.5) ease, opacity calc(var(--duration) * 1.5) ease;
+}
+.like-icon svg path {
+  fill: #e5e5e5;
+}
+
+.checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+.checkbox:checked ~ .like-icon svg.below {
+  transform: scale(1.6);
+  opacity: 0;
+}
+.checkbox:checked ~ .like-icon svg.below path {
+  fill: #77c44c;
+}
+.checkbox:checked ~ .like-icon svg.front path {
+  fill: #77c44c;
+}
+
+.like:active {
+  transform: scale(0.9);
+  transition-duration: calc(var(--duration) / 3);
+}
+.like:active .bg::before {
+  transform: translateY(0) scale(0.9);
+  opacity: 0.25;
+}
